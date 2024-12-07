@@ -4,6 +4,7 @@ namespace Knightar\StampsSoapClient\Type;
 
 class Credentials
 {
+
     /**
      * @var string
      */
@@ -18,6 +19,20 @@ class Credentials
      * @var string
      */
     private string $Password;
+
+    /**
+     * The constructor for the Credentials class.
+     *
+     * @param string $IntegrationID
+     * @param string $Username
+     * @param string $Password
+     */
+    public function __construct(string $IntegrationID, string $Username, string $Password)
+    {
+        $this->IntegrationID = $IntegrationID;
+        $this->Username = $Username;
+        $this->Password = $Password;
+    }
 
     /**
      * @return string

@@ -305,8 +305,6 @@ class CreateIndicium implements RequestInterface
      * @param null | string $NotificationSettingId
      * @param null | string $GroupCode
      * @param null | string $Description
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param null | 'Normal' | 'NoPostage' $PostageMode
      * @param null | 'Auto' | 'Png' | 'Gif' | 'Pdf' | 'Epl' | 'Jpg' | 'PrintOncePdf' | 'EncryptedPngUrl' | 'Zpl' | 'AZpl' | 'BZpl' | 'Bmp' | 'BmpMonochrome' | 'PngMonochrome' | 'JpgMonochrome' | 'GifMonochrome' $ImageType
      * @param null | 'Default' | 'High' $EltronPrinterDPIType
@@ -315,6 +313,8 @@ class CreateIndicium implements RequestInterface
      * @param null | 'ImageDpiDefault' | 'ImageDpi200' | 'ImageDpi300' | 'ImageDpi203' | 'ImageDpi96' | 'ImageDpi150' $ImageDpi
      * @param null | 'Unknown' | 'MarketingMail' | 'Periodicals' | 'NewsPeriodicals' | 'BoundMedia' | 'ParcelSelect' | 'OtherPackageService' $EnclosedServiceType
      * @param null | 'Unknown' | 'Letters' | 'Flats' | 'Irregular Parcels' | 'Machinable Parcels' | 'Non-Machinable Parcels' $EnclosedPackageType
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
     public function __construct(
         string                                                 $IntegratorTxID,
@@ -358,8 +358,6 @@ class CreateIndicium implements RequestInterface
         ?string                                                $NotificationSettingId = null,
         ?string                                                $GroupCode = null,
         ?string                                                $Description = null,
-        ?string                                                $Authenticator = null,
-        ?\Knightar\StampsSoapClient\Type\Credentials           $Credentials = null,
         ?string                                                $PostageMode = 'Normal',
         ?string                                                $ImageType = 'Auto',
         ?string                                                $EltronPrinterDPIType = 'Default',
@@ -367,12 +365,11 @@ class CreateIndicium implements RequestInterface
         ?string                                                $PaperSize = 'Default',
         ?string                                                $ImageDpi = 'ImageDpiDefault',
         ?string                                                $EnclosedServiceType = 'Unknown',
-        ?string                                                $EnclosedPackageType = 'Unknown'
+        ?string                                                $EnclosedPackageType = 'Unknown',
+        ?string                                                $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials           $Credentials = null,
     )
     {
-        if (is_null($Rate->getAmount()) || is_null($Rate->getMaxAmount())) {
-            throw new \InvalidArgumentException("Rate must have an amount and max amount set. Please run though getRates method.");
-        }
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
         $this->IntegratorTxID = $IntegratorTxID;
@@ -574,9 +571,6 @@ class CreateIndicium implements RequestInterface
      */
     public function withRate(\Knightar\StampsSoapClient\Type\RateV46 $Rate) : static
     {
-        if (is_null($Rate->getAmount()) || is_null($Rate->getMaxAmount())) {
-            throw new \InvalidArgumentException("Rate must have an amount and max amount set. Please run though getRates method.");
-        }
         $new = clone $this;
         $new->Rate = $Rate;
 

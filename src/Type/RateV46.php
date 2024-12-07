@@ -200,6 +200,130 @@ class RateV46
     private ?string $SortType = null;
 
     /**
+     * @param \Knightar\StampsSoapClient\Type\Address $From
+     * @param \Knightar\StampsSoapClient\Type\Address $To
+     * @param float|null $Amount
+     * @param float|null $MaxAmount
+     * @param null | 'Unknown' | 'US-FC' | 'US-PM' | 'US-XM' | 'US-MM' | 'US-BP' | 'US-LM' | 'US-EMI' | 'US-PMI' | 'US-FCI' | 'US-CM' | 'US-PS' | 'DHL-PE' | 'DHL-PG' | 'DHL-BPME' | 'DHL-BPMG' | 'DHL-MPE' | 'DHL-MPG' | 'AS-IPA' | 'AS-ISAL' | 'AS-EPKT' | 'DHL-PIPA' | 'GG-IPA' | 'GG-ISAL' | 'GG-EPKT' | 'IBC-IPA' | 'IBC-ISAL' | 'IBC-EPKT' | 'RRD-IPA' | 'RRD-ISAL' | 'RRD-EPKT' | 'AS-GNRC' | 'GG-GNRC' | 'RRD-GNRC' | 'SC-GPE' | 'SC-GPP' | 'SC-GPESS' | 'SC-GPPSS' | 'DHL-EWW' | 'FX-GD' | 'FX-HD' | 'FX-2D' | 'FX-ES' | 'FX-SO' | 'FX-PO' | 'FX-GDI' | 'FX-EI' | 'FX-PI' | 'SC-GPLSS' | 'US-RG' | 'SC-GPL' | 'UPS-NDAE' | 'UPS-NDA' | 'UPS-NDAS' | 'UPS-2DAA' | 'UPS-2DA' | 'UPS-3DS' | 'UPS-GD' | 'UPS-SD' | 'UPS-WES' | 'UPS-WESP' | 'UPS-WED' | 'UPS-WSR' | 'SC-GPFCI' | 'SC-GPFCISS' | 'SC-GPPMI' | 'SC-GPPMISS' | 'SC-GPEMI' | 'SC-GPEMISS' | 'SC-GPFCSS' | 'SC-GPPSSS' | 'CP-PM' | 'CP-XP' | 'CP-EP' | 'CP-RP' | 'CP-PMW' | 'CP-PMWU' | 'CP-XPI' | 'CP-XPU' | 'CP-EPU' | 'CP-TPI' | 'CP-TPU' | 'CP-SPIA' | 'CP-SPIS' | 'CP-SPUA' | 'CP-IPA' | 'CP-IPS' | 'FX-2DAM' | 'FX-FO' | 'FX-FI' | 'US-RETURN' | 'DHL-PIPL' | 'DHL-PIS' | 'DHL-PI' | 'DHL-PID' | 'DHL-PEM' | 'UPS-GDS' | 'US-GA' $ServiceType
+     * @param string|null $ServiceDescription
+     * @param string|null $PrintLayout
+     * @param string|null $DeliverDays
+     * @param float|null $WeightLb
+     * @param float|null $WeightOz
+     * @param null | 'Unknown' | 'Postcard' | 'Letter' | 'Large Envelope or Flat' | 'Thick Envelope' | 'Package' | 'Flat Rate Box' | 'Small Flat Rate Box' | 'Large Flat Rate Box' | 'Flat Rate Envelope' | 'Flat Rate Padded Envelope' | 'Large Package' | 'Oversized Package' | 'Regional Rate Box A' | 'Regional Rate Box B' | 'Legal Flat Rate Envelope' | 'Regional Rate Box C' | 'OpenAndDistribute Half Tray Box' | 'OpenAndDistribute Full Tray Box' | 'OpenAndDistribute EMM Tray Box' | 'OpenAndDistribute Flat Tub Tray Box' | 'Express Envelope' | 'Documents' | 'Envelope' | 'Pak' | '10 KG Box' | '25 KG Box' | 'Express Box Large' | 'Express Box Medium' | 'Express Box Small' | 'Tube' | 'One Rate Envelope' | 'One Rate Small Box' | 'One Rate Medium Box' | 'One Rate Large Box' | 'One Rate Extra Large Box' | 'One Rate Pak' | 'One Rate Tube' | 'Box' $PackageType
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfArrayOfAddOnTypeV20|null $RequiresAllOf
+     * @param float|null $Length
+     * @param float|null $Width
+     * @param float|null $Height
+     * @param \DateTimeInterface|null $ShipDate
+     * @param \DateTimeInterface|null $DeliveryDate
+     * @param float|null $InsuredValue
+     * @param float|null $RegisteredValue
+     * @param float|null $CODValue
+     * @param float|null $DeclaredValue
+     * @param bool|null $NonMachinable
+     * @param bool|null $RectangularShaped
+     * @param string|null $Prohibitions
+     * @param string|null $Restrictions
+     * @param string|null $Observations
+     * @param string|null $Regulations
+     * @param string|null $GEMNotes
+     * @param string|null $MaxDimensions
+     * @param string|null $DimWeighting
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfAddOnV20|null $AddOns
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfSurchargeV5|null $Surcharges
+     * @param int|null $EffectiveWeightInOunces
+     * @param int|null $Zone
+     * @param int|null $RateCategory
+     * @param bool|null $CubicPricing
+     * @param null | 'Commercial Sample' | 'Gift' | 'Document' | 'Returned Goods' | 'Other' | 'Merchandise' | 'Humanitarian Donation' | 'Dangerous Goods' $ContentType
+     * @param null | 'Unknown' | 'None' | 'DDU' | 'ADC' | 'ASF' | 'NDC' | 'SCF' | 'Other' $EntryFacility
+     * @param null | 'Unknown' | 'FiveDigit' | 'ThreeDigit' | 'NDC' | 'SCF' | 'MixedNDC' | 'Other'  $SortType
+     */
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\Address $From,
+        \Knightar\StampsSoapClient\Type\Address $To,
+        ?float $Amount = null,
+        ?float $MaxAmount = null,
+        ?string $ServiceType = null,
+        ?string $ServiceDescription = null,
+        ?string $PrintLayout = 'Normal',
+        ?string $DeliverDays = null,
+        ?float $WeightLb = 0.0,
+        ?float $WeightOz = null,
+        ?string $PackageType = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfArrayOfAddOnTypeV20 $RequiresAllOf = null,
+        ?float $Length = null,
+        ?float $Width = null,
+        ?float $Height = null,
+        ?\DateTimeInterface $ShipDate = null,
+        ?\DateTimeInterface $DeliveryDate = null,
+        ?float $InsuredValue = null,
+        ?float $RegisteredValue = null,
+        ?float $CODValue = null,
+        ?float $DeclaredValue = null,
+        ?bool $NonMachinable = null,
+        ?bool $RectangularShaped = null,
+        ?string $Prohibitions = null,
+        ?string $Restrictions = null,
+        ?string $Observations = null,
+        ?string $Regulations = null,
+        ?string $GEMNotes = null,
+        ?string $MaxDimensions = null,
+        ?string $DimWeighting = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfAddOnV20 $AddOns = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfSurchargeV5 $Surcharges = null,
+        ?int $EffectiveWeightInOunces = null,
+        ?int $Zone = null,
+        ?int $RateCategory = null,
+        ?bool $CubicPricing = null,
+        ?string $ContentType = null,
+        ?string $EntryFacility = null,
+        ?string $SortType = null
+    ) {
+        $this->From = $From;
+        $this->To = $To;
+        $this->Amount = $Amount;
+        $this->MaxAmount = $MaxAmount;
+        $this->ServiceType = $ServiceType;
+        $this->ServiceDescription = $ServiceDescription;
+        $this->PrintLayout = $PrintLayout;
+        $this->DeliverDays = $DeliverDays;
+        $this->WeightLb = $WeightLb;
+        $this->WeightOz = $WeightOz;
+        $this->PackageType = $PackageType;
+        $this->RequiresAllOf = $RequiresAllOf;
+        $this->Length = $Length;
+        $this->Width = $Width;
+        $this->Height = $Height;
+        $this->ShipDate = $ShipDate;
+        $this->DeliveryDate = $DeliveryDate;
+        $this->InsuredValue = $InsuredValue;
+        $this->RegisteredValue = $RegisteredValue;
+        $this->CODValue = $CODValue;
+        $this->DeclaredValue = $DeclaredValue;
+        $this->NonMachinable = $NonMachinable;
+        $this->RectangularShaped = $RectangularShaped;
+        $this->Prohibitions = $Prohibitions;
+        $this->Restrictions = $Restrictions;
+        $this->Observations = $Observations;
+        $this->Regulations = $Regulations;
+        $this->GEMNotes = $GEMNotes;
+        $this->MaxDimensions = $MaxDimensions;
+        $this->DimWeighting = $DimWeighting;
+        $this->AddOns = $AddOns;
+        $this->Surcharges = $Surcharges;
+        $this->EffectiveWeightInOunces = $EffectiveWeightInOunces;
+        $this->Zone = $Zone;
+        $this->RateCategory = $RateCategory;
+        $this->CubicPricing = $CubicPricing;
+        $this->ContentType = $ContentType;
+        $this->EntryFacility = $EntryFacility;
+        $this->SortType = $SortType;
+    }
+
+
+    /**
      * @return \Knightar\StampsSoapClient\Type\Address
      */
     public function getFrom() : \Knightar\StampsSoapClient\Type\Address

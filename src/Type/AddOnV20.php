@@ -35,6 +35,32 @@ class AddOnV20
     private ?string $MissingData = null;
 
     /**
+     * AddOnV20 constructor.
+     *
+     * @param string $AddOnType The type of the add-on.
+     * @param float|null $Amount The amount for the add-on.
+     * @param string|null $AddOnDescription The description of the add-on.
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfArrayOfAddOnTypeV20|null $RequiresAllOf List of types the add-on requires.
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfAddOnTypeV20|null $ProhibitedWithAnyOf List of types prohibited with the add-on.
+     * @param string|null $MissingData Data missing from the add-on.
+     */
+    public function __construct(
+        string $AddOnType,
+        ?float $Amount = null,
+        ?string $AddOnDescription = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfArrayOfAddOnTypeV20 $RequiresAllOf = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfAddOnTypeV20 $ProhibitedWithAnyOf = null,
+        ?string $MissingData = null
+    ) {
+        $this->Amount = $Amount;
+        $this->AddOnType = $AddOnType;
+        $this->AddOnDescription = $AddOnDescription;
+        $this->RequiresAllOf = $RequiresAllOf;
+        $this->ProhibitedWithAnyOf = $ProhibitedWithAnyOf;
+        $this->MissingData = $MissingData;
+    }
+
+    /**
      * @return null | float
      */
     public function getAmount() : ?float

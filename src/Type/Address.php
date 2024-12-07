@@ -5,6 +5,97 @@ namespace Knightar\StampsSoapClient\Type;
 class Address
 {
     /**
+     * Address constructor.
+     * @param string|null $FullName
+     * @param string|null $NamePrefix
+     * @param string|null $FirstName
+     * @param string|null $MiddleName
+     * @param string|null $LastName
+     * @param string|null $NameSuffix
+     * @param string|null $Title
+     * @param string|null $Department
+     * @param string|null $Company
+     * @param string|null $Address1
+     * @param string|null $Address2
+     * @param string|null $Address3
+     * @param string|null $City
+     * @param string|null $State
+     * @param string|null $ZIPCode
+     * @param string|null $ZIPCodeAddOn
+     * @param string|null $DPB
+     * @param string|null $CheckDigit
+     * @param string|null $Province
+     * @param string|null $PostalCode
+     * @param string|null $Country
+     * @param string|null $Urbanization
+     * @param string|null $PhoneNumber
+     * @param string|null $Extension
+     * @param string|null $CleanseHash
+     * @param string|null $OverrideHash
+     * @param string|null $EmailAddress
+     * @param string|null $FullAddress
+     */
+    public function __construct(
+        ?string $FullName = null,
+        ?string $NamePrefix = null,
+        ?string $FirstName = null,
+        ?string $MiddleName = null,
+        ?string $LastName = null,
+        ?string $NameSuffix = null,
+        ?string $Title = null,
+        ?string $Department = null,
+        ?string $Company = null,
+        ?string $Address1 = null,
+        ?string $Address2 = null,
+        ?string $Address3 = null,
+        ?string $City = null,
+        ?string $State = null,
+        ?string $ZIPCode = null,
+        ?string $ZIPCodeAddOn = null,
+        ?string $DPB = null,
+        ?string $CheckDigit = null,
+        ?string $Province = null,
+        ?string $PostalCode = null,
+        ?string $Country = null,
+        ?string $Urbanization = null,
+        ?string $PhoneNumber = null,
+        ?string $Extension = null,
+        ?string $CleanseHash = null,
+        ?string $OverrideHash = null,
+        ?string $EmailAddress = null,
+        ?string $FullAddress = null
+    ) {
+        $this->FullName = $FullName;
+        $this->NamePrefix = $NamePrefix;
+        $this->FirstName = $FirstName;
+        $this->MiddleName = $MiddleName;
+        $this->LastName = $LastName;
+        $this->NameSuffix = $NameSuffix;
+        $this->Title = $Title;
+        $this->Department = $Department;
+        $this->Company = $Company;
+        $this->Address1 = $Address1;
+        $this->Address2 = $Address2;
+        $this->Address3 = $Address3;
+        $this->City = $City;
+        $this->State = $State;
+        $this->ZIPCode = $ZIPCode;
+        $this->ZIPCodeAddOn = $ZIPCodeAddOn;
+        $this->DPB = $DPB;
+        $this->CheckDigit = $CheckDigit;
+        $this->Province = $Province;
+        $this->PostalCode = $PostalCode;
+        $this->Country = $Country;
+        $this->Urbanization = $Urbanization;
+        $this->PhoneNumber = $PhoneNumber;
+        $this->Extension = $Extension;
+        $this->CleanseHash = $CleanseHash;
+        $this->OverrideHash = $OverrideHash;
+        $this->EmailAddress = $EmailAddress;
+        $this->FullAddress = $FullAddress;
+    }
+
+    /**
      * @var null | string
      */
     private ?string $FullName = null;
@@ -704,4 +795,3 @@ class Address
         return $new;
     }
 }
-
