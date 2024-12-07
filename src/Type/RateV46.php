@@ -37,7 +37,7 @@ class RateV46
     /**
      * @var null | string
      */
-    private ?string $PrintLayout = null;
+    private ?string $PrintLayout = 'Normal';
 
     /**
      * @var null | string
@@ -47,7 +47,7 @@ class RateV46
     /**
      * @var null | float
      */
-    private ?float $WeightLb = null;
+    private ?float $WeightLb = 0.0;
 
     /**
      * @var null | float
@@ -334,7 +334,7 @@ class RateV46
     public function withPrintLayout(?string $PrintLayout) : static
     {
         $new = clone $this;
-        $new->PrintLayout = $PrintLayout;
+        $new->PrintLayout = $PrintLayout ?? 'Normal';
 
         return $new;
     }

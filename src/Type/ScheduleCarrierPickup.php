@@ -52,19 +52,27 @@ class ScheduleCarrierPickup implements RequestInterface
     private ?string $PickupType = null;
 
     /**
-     * Constructor
-     *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param \Knightar\StampsSoapClient\Type\CarrierPickupContactInformationV2 $ContactInformation
      * @param \Knightar\StampsSoapClient\Type\CarrierPickupAddressV3 $Address
      * @param \Knightar\StampsSoapClient\Type\CarrierPickupPackageInformation $PackageInformation
-     * @param null | 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
      * @param null | string $PickupTimeEarliest
      * @param null | string $PickupTimeLatest
+     * @param null | 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
      * @param null | 'Default' | 'AutoPickup' $PickupType
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\CarrierPickupContactInformationV2 $ContactInformation, \Knightar\StampsSoapClient\Type\CarrierPickupAddressV3 $Address, \Knightar\StampsSoapClient\Type\CarrierPickupPackageInformation $PackageInformation, ?string $Carrier, ?string $PickupTimeEarliest, ?string $PickupTimeLatest, ?string $PickupType)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\CarrierPickupContactInformationV2 $ContactInformation,
+        \Knightar\StampsSoapClient\Type\CarrierPickupAddressV3            $Address,
+        \Knightar\StampsSoapClient\Type\CarrierPickupPackageInformation   $PackageInformation,
+        ?string                                                           $PickupTimeEarliest = null,
+        ?string                                                           $PickupTimeLatest = null,
+        ?string                                                           $Carrier = null,
+        ?string                                                           $PickupType = null,
+        ?string                                                           $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials                      $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
@@ -76,6 +84,18 @@ class ScheduleCarrierPickup implements RequestInterface
         $this->PickupTimeLatest = $PickupTimeLatest;
         $this->PickupType = $PickupType;
     }
+
+    const CARRIER_ALL = 'All';
+    const CARRIER_USPS = 'USPS';
+    const CARRIER_FEDEX = 'FedEx';
+    const CARRIER_DHLEXPRESS = 'DHLExpress';
+    const CARRIER_UPS = 'UPS';
+    const CARRIER_CANADAPOST = 'CanadaPost';
+    const CARRIER_DHLECOMMERCE = 'DhlECommerce';
+    const CARRIER_ZORBIT = 'Zorbit';
+
+    const PICKUPTYPE_DEFAULT = 'Default';
+    const PICKUPTYPE_AUTOPICKUP = 'AutoPickup';
 
     /**
      * @return null | string

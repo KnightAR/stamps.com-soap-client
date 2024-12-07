@@ -24,15 +24,19 @@ class ResubmitPurchase implements RequestInterface
     /**
      * Constructor
      *
+     * @param string $ResubmitCookie
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param string $ResubmitCookie
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $ResubmitCookie)
+    public function __construct(
+        string                                       $ResubmitCookie,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
+        $this->ResubmitCookie = $ResubmitCookie;
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
-        $this->ResubmitCookie = $ResubmitCookie;
     }
 
     /**

@@ -24,15 +24,19 @@ class DeleteUserPaymentMethod implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | string $PaymentMethodID
+     * @param string|null $PaymentMethodID
+     * @param string|null $Authenticator
+     * @param \Knightar\StampsSoapClient\Type\Credentials|null $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?string $PaymentMethodID)
+    public function __construct(
+        ?string                                      $PaymentMethodID = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
+        $this->PaymentMethodID = $PaymentMethodID;
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
-        $this->PaymentMethodID = $PaymentMethodID;
     }
 
     /**

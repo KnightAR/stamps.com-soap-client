@@ -29,12 +29,17 @@ class GetShipmentListByToken implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $ShipmentListToken
      * @param int $PageNumber
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $ShipmentListToken, int $PageNumber)
+    public function __construct(
+        string                                       $ShipmentListToken,
+        int                                          $PageNumber,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

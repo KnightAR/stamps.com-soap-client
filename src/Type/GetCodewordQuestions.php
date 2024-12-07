@@ -20,9 +20,12 @@ class GetCodewordQuestions implements RequestInterface
      * Constructor
      *
      * @param string $Username
-     * @param null | string $IntegrationId
+     * @param string|null $IntegrationId
      */
-    public function __construct(string $Username, ?string $IntegrationId)
+    public function __construct(
+        string  $Username,
+        ?string $IntegrationId = null
+    )
     {
         $this->Username = $Username;
         $this->IntegrationId = $IntegrationId;

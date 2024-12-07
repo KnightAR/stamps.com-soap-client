@@ -86,27 +86,85 @@ class AddCarrier implements RequestInterface
      */
     private ?string $DistributionCenter = null;
 
+
+    /**
+     * @var string 'All'
+     */
+    const CARRIER_ALL = 'All';
+
+    /**
+     * @var string 'USPS'
+     */
+    const CARRIER_USPS = 'USPS';
+
+    /**
+     * @var string 'FedEx'
+     */
+    const CARRIER_FEDEX = 'FedEx';
+
+    /**
+     * @var string 'DHLExpress'
+     */
+    const CARRIER_DHL_EXPRESS = 'DHLExpress';
+
+    /**
+     * @var string 'UPS'
+     */
+    const CARRIER_UPS = 'UPS';
+
+    /**
+     * @var string 'CanadaPost'
+     */
+    const CARRIER_CANADA_POST = 'CanadaPost';
+
+    /**
+     * @var string 'DhlECommerce'
+     */
+    const CARRIER_DHL_ECOMMERCE = 'DhlECommerce';
+
+    /**
+     * @var string 'Zorbit'
+     */
+    const CARRIER_ZORBIT = 'Zorbit';
+
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param bool $UserOwnedAccount
      * @param 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
-     * @param null | string $AccountNumber
-     * @param null | string $AccountZIPCode
-     * @param null | string $AccountCountry
-     * @param null | \Knightar\StampsSoapClient\Type\Address $Address
+     * @param bool $UserOwnedAccount
      * @param null | bool $AgreeToEula
-     * @param null | \Knightar\StampsSoapClient\Type\Invoice $Invoice
      * @param null | bool $NegotiatedRates
      * @param null | string $DeviceIdentity
      * @param null | string $ClientId
      * @param null | string $ClientSecret
      * @param null | string $PickupNumber
      * @param null | string $DistributionCenter
+     * @param null | string $AccountNumber
+     * @param null | string $AccountZIPCode
+     * @param null | string $AccountCountry
+     * @param null | \Knightar\StampsSoapClient\Type\Address $Address
+     * @param null | \Knightar\StampsSoapClient\Type\Invoice $Invoice
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, bool $UserOwnedAccount, string $Carrier, ?string $AccountNumber, ?string $AccountZIPCode, ?string $AccountCountry, ?\Knightar\StampsSoapClient\Type\Address $Address, ?bool $AgreeToEula, ?\Knightar\StampsSoapClient\Type\Invoice $Invoice, ?bool $NegotiatedRates, ?string $DeviceIdentity, ?string $ClientId, ?string $ClientSecret, ?string $PickupNumber, ?string $DistributionCenter)
+    public function __construct(
+        string                                       $Carrier,
+        bool                                         $UserOwnedAccount,
+        ?bool                                        $AgreeToEula = null,
+        ?bool                                        $NegotiatedRates = null,
+        ?string                                      $DeviceIdentity = null,
+        ?string                                      $ClientId = null,
+        ?string                                      $ClientSecret = null,
+        ?string                                      $PickupNumber = null,
+        ?string                                      $DistributionCenter = null,
+        ?string                                      $AccountNumber = null,
+        ?string                                      $AccountZIPCode = null,
+        ?string                                      $AccountCountry = null,
+        ?\Knightar\StampsSoapClient\Type\Address     $Address = null,
+        ?\Knightar\StampsSoapClient\Type\Invoice     $Invoice = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

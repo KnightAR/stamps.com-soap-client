@@ -46,19 +46,33 @@ class AddUserPaymentMethod implements RequestInterface
      */
     private ?bool $SendEmail = null;
 
+    /** Constants for DefaultPaymentMethodType */
+    public const ALL_DEFAULT_PAYMENT_METHODS = 'AllDefaultPaymentMethods';
+    public const DEFAULT_SERVICE_FEE_PAYMENT_METHOD = 'DefaultServiceFeePaymentMethod';
+    public const DEFAULT_POSTAL_PURCHASE_PAYMENT_METHOD = 'DefaultPostalPurchasePaymentMethod';
+    public const DEFAULT_STORE_PAYMENT_METHOD = 'DefaultStorePaymentMethod';
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param \Knightar\StampsSoapClient\Type\MachineInfo $MachineInfo
-     * @param null | 'AllDefaultPaymentMethods' | 'DefaultServiceFeePaymentMethod' | 'DefaultPostalPurchasePaymentMethod' | 'DefaultStorePaymentMethod' $DefaultPaymentMethodType
      * @param null | \Knightar\StampsSoapClient\Type\CreditCard $CreditCard
      * @param null | \Knightar\StampsSoapClient\Type\AchAccount $AchAccount
      * @param null | \Knightar\StampsSoapClient\Type\PPLAccount $PPL
      * @param null | bool $SendEmail
+     * @param null | 'AllDefaultPaymentMethods' | 'DefaultServiceFeePaymentMethod' | 'DefaultPostalPurchasePaymentMethod' | 'DefaultStorePaymentMethod' $DefaultPaymentMethodType
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\MachineInfo $MachineInfo, ?string $DefaultPaymentMethodType, ?\Knightar\StampsSoapClient\Type\CreditCard $CreditCard, ?\Knightar\StampsSoapClient\Type\AchAccount $AchAccount, ?\Knightar\StampsSoapClient\Type\PPLAccount $PPL, ?bool $SendEmail)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\MachineInfo  $MachineInfo,
+        ?\Knightar\StampsSoapClient\Type\CreditCard  $CreditCard = null,
+        ?\Knightar\StampsSoapClient\Type\AchAccount  $AchAccount = null,
+        ?\Knightar\StampsSoapClient\Type\PPLAccount  $PPL = null,
+        ?bool                                        $SendEmail = null,
+        ?string                                      $DefaultPaymentMethodType = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

@@ -37,16 +37,21 @@ class SetCodeWords implements RequestInterface
     private ?string $Codeword2 = null;
 
     /**
-     * Constructor
-     *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | 'Undefined' | 'MothersMaidenName' | 'PetsName' | 'BirthCity' | 'HighSchoolMascot' | 'FathersBirthplace' | 'StreetName' | 'FirstSchoolsName' | 'FirstCarsMakeModel' | 'Last4SocialSecurityNumber' | 'Last4DriversLicense' $Codeword1Type
+     * @param null | string | 'Undefined' | 'MothersMaidenName' | 'PetsName' | 'BirthCity' | 'HighSchoolMascot' | 'FathersBirthplace' | 'StreetName' | 'FirstSchoolsName' | 'FirstCarsMakeModel' | 'Last4SocialSecurityNumber' | 'Last4DriversLicense'  $Codeword1Type
      * @param null | string $Codeword1
-     * @param null | 'Undefined' | 'MothersMaidenName' | 'PetsName' | 'BirthCity' | 'HighSchoolMascot' | 'FathersBirthplace' | 'StreetName' | 'FirstSchoolsName' | 'FirstCarsMakeModel' | 'Last4SocialSecurityNumber' | 'Last4DriversLicense' $Codeword2Type
+     * @param null | string | 'Undefined' | 'MothersMaidenName' | 'PetsName' | 'BirthCity' | 'HighSchoolMascot' | 'FathersBirthplace' | 'StreetName' | 'FirstSchoolsName' | 'FirstCarsMakeModel' | 'Last4SocialSecurityNumber' | 'Last4DriversLicense'  $Codeword2Type
      * @param null | string $Codeword2
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
+     * @param null | string $Authenticator
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?string $Codeword1Type, ?string $Codeword1, ?string $Codeword2Type, ?string $Codeword2)
+    public function __construct(
+        ?string                                      $Codeword1Type = null,
+        ?string                                      $Codeword1 = null,
+        ?string                                      $Codeword2Type = null,
+        ?string                                      $Codeword2 = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null,
+        ?string                                      $Authenticator = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
@@ -55,6 +60,18 @@ class SetCodeWords implements RequestInterface
         $this->Codeword2Type = $Codeword2Type;
         $this->Codeword2 = $Codeword2;
     }
+
+    public const CODEWORD_TYPE_UNDEFINED = 'Undefined';
+    public const CODEWORD_TYPE_MOTHERS_MAIDEN_NAME = 'MothersMaidenName';
+    public const CODEWORD_TYPE_PETS_NAME = 'PetsName';
+    public const CODEWORD_TYPE_BIRTH_CITY = 'BirthCity';
+    public const CODEWORD_TYPE_HIGH_SCHOOL_MASCOT = 'HighSchoolMascot';
+    public const CODEWORD_TYPE_FATHERS_BIRTHPLACE = 'FathersBirthplace';
+    public const CODEWORD_TYPE_STREET_NAME = 'StreetName';
+    public const CODEWORD_TYPE_FIRST_SCHOOLS_NAME = 'FirstSchoolsName';
+    public const CODEWORD_TYPE_FIRST_CARS_MAKE_MODEL = 'FirstCarsMakeModel';
+    public const CODEWORD_TYPE_LAST_4_SOCIAL_SECURITY_NUMBER = 'Last4SocialSecurityNumber';
+    public const CODEWORD_TYPE_LAST_4_DRIVERS_LICENSE = 'Last4DriversLicense';
 
     /**
      * @return null | string

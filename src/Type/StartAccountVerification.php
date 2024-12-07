@@ -31,16 +31,26 @@ class StartAccountVerification implements RequestInterface
      */
     private string $PhoneVerificationOption;
 
+// Defining constants for phone verification options
+    const PHONE_VERIFICATION_OPTION_SMS = 'SMS';
+    const PHONE_VERIFICATION_OPTION_VOICE = 'Voice';
+
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
+     * @param string | 'SMS' | 'Voice' $PhoneVerificationOption
      * @param null | string $PhoneNumber
      * @param null | string $Extension
-     * @param 'SMS' | 'Voice' $PhoneVerificationOption
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?string $PhoneNumber, ?string $Extension, string $PhoneVerificationOption)
+    public function __construct(
+        string                                       $PhoneVerificationOption,
+        ?string                                      $PhoneNumber = null,
+        ?string                                      $Extension = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

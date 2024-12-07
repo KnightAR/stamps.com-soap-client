@@ -19,10 +19,13 @@ class EnumCostCodes implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
+     * @param \Knightar\StampsSoapClient\Type\Credentials|null $Credentials
+     * @param string|null $Authenticator
      */
-    public function __construct(?string $Authenticator, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials)
+    public function __construct(
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null,
+        ?string                                      $Authenticator = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

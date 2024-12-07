@@ -24,15 +24,19 @@ class SetAutoBuy implements RequestInterface
     /**
      * Constructor
      *
+     * @param \Knightar\StampsSoapClient\Type\AutoBuySettings $AutoBuySettings
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param \Knightar\StampsSoapClient\Type\AutoBuySettings $AutoBuySettings
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\AutoBuySettings $AutoBuySettings)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\AutoBuySettings $AutoBuySettings,
+        ?string                                         $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials    $Credentials = null
+    )
     {
+        $this->AutoBuySettings = $AutoBuySettings;
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
-        $this->AutoBuySettings = $AutoBuySettings;
     }
 
     /**

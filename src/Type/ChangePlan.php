@@ -34,19 +34,25 @@ class ChangePlan implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | int $PlanId
-     * @param null | string $PromoCode
-     * @param null | bool $SendEmail
+     * @param int|null $PlanId
+     * @param string|null $PromoCode
+     * @param bool|null $SendEmail
+     * @param string|null $Authenticator
+     * @param \Knightar\StampsSoapClient\Type\Credentials|null $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?int $PlanId, ?string $PromoCode, ?bool $SendEmail)
+    public function __construct(
+        ?int                                         $PlanId = null,
+        ?bool                                        $SendEmail = null,
+        ?string                                      $PromoCode = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
-        $this->Authenticator = $Authenticator;
-        $this->Credentials = $Credentials;
         $this->PlanId = $PlanId;
         $this->PromoCode = $PromoCode;
         $this->SendEmail = $SendEmail;
+        $this->Authenticator = $Authenticator;
+        $this->Credentials = $Credentials;
     }
 
     /**

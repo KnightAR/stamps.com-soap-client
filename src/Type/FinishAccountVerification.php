@@ -24,15 +24,19 @@ class FinishAccountVerification implements RequestInterface
     /**
      * Constructor
      *
+     * @param string $PhoneVerificationCode
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param string $PhoneVerificationCode
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $PhoneVerificationCode)
+    public function __construct(
+        string                                       $PhoneVerificationCode,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
+        $this->PhoneVerificationCode = $PhoneVerificationCode;
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
-        $this->PhoneVerificationCode = $PhoneVerificationCode;
     }
 
     /**

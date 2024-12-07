@@ -34,13 +34,19 @@ class GetShipmentList implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | int $ShipmentsPerPage
      * @param \Knightar\StampsSoapClient\Type\Filters $Filters
      * @param null | \Knightar\StampsSoapClient\Type\ArrayOfIncludeField $IncludeFields
+     * @param null | int $ShipmentsPerPage
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?int $ShipmentsPerPage, \Knightar\StampsSoapClient\Type\Filters $Filters, ?\Knightar\StampsSoapClient\Type\ArrayOfIncludeField $IncludeFields)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\Filters              $Filters,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfIncludeField $IncludeFields = null,
+        ?int                                                 $ShipmentsPerPage = null,
+        ?string                                              $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials         $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

@@ -29,12 +29,17 @@ class CleanseAddress implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param \Knightar\StampsSoapClient\Type\Address $Address
      * @param null | string $FromZIPCode
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\Address $Address, ?string $FromZIPCode)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\Address      $Address,
+        ?string                                      $FromZIPCode = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

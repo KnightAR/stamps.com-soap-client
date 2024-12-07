@@ -22,7 +22,7 @@ class RecoverUsername implements RequestInterface
      * @param string $EmailAddress
      * @param null | string $Reserved
      */
-    public function __construct(string $EmailAddress, ?string $Reserved)
+    public function __construct(string $EmailAddress, ?string $Reserved = null)
     {
         $this->EmailAddress = $EmailAddress;
         $this->Reserved = $Reserved;

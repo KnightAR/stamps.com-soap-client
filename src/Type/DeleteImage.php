@@ -24,15 +24,19 @@ class DeleteImage implements RequestInterface
     /**
      * Constructor
      *
+     * @param int $ImageId
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param int $ImageId
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, int $ImageId)
+    public function __construct(
+        int                                          $ImageId,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
+        $this->ImageId = $ImageId;
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
-        $this->ImageId = $ImageId;
     }
 
     /**

@@ -34,13 +34,19 @@ class PriceOrder implements RequestInterface
     /**
      * Constructor
      *
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfSku $Skus
+     * @param \Knightar\StampsSoapClient\Type\Address $ShippingAddress
+     * @param null | string $PromoCode
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param \Knightar\StampsSoapClient\Type\ArrayOfSku $Skus
-     * @param null | string $PromoCode
-     * @param \Knightar\StampsSoapClient\Type\Address $ShippingAddress
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\ArrayOfSku $Skus, ?string $PromoCode, \Knightar\StampsSoapClient\Type\Address $ShippingAddress)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\ArrayOfSku   $Skus,
+        \Knightar\StampsSoapClient\Type\Address      $ShippingAddress,
+        ?string                                      $PromoCode = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

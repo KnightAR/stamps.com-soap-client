@@ -107,20 +107,95 @@ class RegisterAccount implements RequestInterface
     private ?string $IovationBlackBox = null;
 
     /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_UNDEFINED = 'Undefined';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_MOTHERS_MAIDEN_NAME = 'MothersMaidenName';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_PETS_NAME = 'PetsName';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_BIRTH_CITY = 'BirthCity';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_HIGH_SCHOOL_MASCOT = 'HighSchoolMascot';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_FATHERS_BIRTHPLACE = 'FathersBirthplace';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_STREET_NAME = 'StreetName';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_FIRST_SCHOOLS_NAME = 'FirstSchoolsName';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_FIRST_CARS_MAKE_MODEL = 'FirstCarsMakeModel';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_LAST_4_SOCIAL_SECURITY_NUMBER = 'Last4SocialSecurityNumber';
+
+    /**
+     * @var string
+     */
+    private const CODEWORD_TYPE_LAST_4_DRIVERS_LICENSE = 'Last4DriversLicense';
+
+    /**
+     * @var string
+     */
+    private const ACCOUNT_TYPE_INDIVIDUAL = 'Individual';
+
+    /**
+     * @var string
+     */
+    private const ACCOUNT_TYPE_HOME_OFFICE = 'HomeOffice';
+
+    /**
+     * @var string
+     */
+    private const ACCOUNT_TYPE_HOME_BASED_BUSINESS = 'HomeBasedBusiness';
+
+    /**
+     * @var string
+     */
+    private const ACCOUNT_TYPE_OFFICE_BASED_BUSINESS = 'OfficeBasedBusiness';
+
+    /**
      * Constructor
      *
      * @param string $IntegrationID
      * @param string $UserName
      * @param string $Password
-     * @param null | 'Undefined' | 'MothersMaidenName' | 'PetsName' | 'BirthCity' | 'HighSchoolMascot' | 'FathersBirthplace' | 'StreetName' | 'FirstSchoolsName' | 'FirstCarsMakeModel' | 'Last4SocialSecurityNumber' | 'Last4DriversLicense' $Codeword1Type
-     * @param null | string $Codeword1
-     * @param null | 'Undefined' | 'MothersMaidenName' | 'PetsName' | 'BirthCity' | 'HighSchoolMascot' | 'FathersBirthplace' | 'StreetName' | 'FirstSchoolsName' | 'FirstCarsMakeModel' | 'Last4SocialSecurityNumber' | 'Last4DriversLicense' $Codeword2Type
-     * @param null | string $Codeword2
      * @param \Knightar\StampsSoapClient\Type\Address $PhysicalAddress
-     * @param null | \Knightar\StampsSoapClient\Type\Address $MailingAddress
      * @param \Knightar\StampsSoapClient\Type\MachineInfo $MachineInfo
      * @param string $Email
-     * @param 'Individual' | 'HomeOffice' | 'HomeBasedBusiness' | 'OfficeBasedBusiness' $AccountType
+     * @param string $AccountType
+     * @param null | string $Codeword1Type
+     * @param null | string $Codeword1
+     * @param null | string $Codeword2Type
+     * @param null | string $Codeword2
+     * @param null | \Knightar\StampsSoapClient\Type\Address $MailingAddress
      * @param null | string $PromoCode
      * @param null | \Knightar\StampsSoapClient\Type\CreditCard $CreditCard
      * @param null | \Knightar\StampsSoapClient\Type\AchAccount $AchAccount
@@ -129,21 +204,44 @@ class RegisterAccount implements RequestInterface
      * @param null | bool $ResetPasswordAfterRegistration
      * @param null | string $UserCurrency
      * @param null | string $IovationBlackBox
+     * @param null | mixed $Authenticator
+     * @param null | mixed $Credentials
      */
-    public function __construct(string $IntegrationID, string $UserName, string $Password, ?string $Codeword1Type, ?string $Codeword1, ?string $Codeword2Type, ?string $Codeword2, \Knightar\StampsSoapClient\Type\Address $PhysicalAddress, ?\Knightar\StampsSoapClient\Type\Address $MailingAddress, \Knightar\StampsSoapClient\Type\MachineInfo $MachineInfo, string $Email, string $AccountType, ?string $PromoCode, ?\Knightar\StampsSoapClient\Type\CreditCard $CreditCard, ?\Knightar\StampsSoapClient\Type\AchAccount $AchAccount, ?\Knightar\StampsSoapClient\Type\PPLAccount $PPL, ?bool $SendEmail, ?bool $ResetPasswordAfterRegistration, ?string $UserCurrency, ?string $IovationBlackBox)
+    public function __construct(
+        string                                      $IntegrationID,
+        string                                      $UserName,
+        string                                      $Password,
+        \Knightar\StampsSoapClient\Type\Address     $PhysicalAddress,
+        \Knightar\StampsSoapClient\Type\MachineInfo $MachineInfo,
+        string                                      $Email,
+        string                                      $AccountType,
+        ?string                                     $Codeword1Type = null,
+        ?string                                     $Codeword1 = null,
+        ?string                                     $Codeword2Type = null,
+        ?string                                     $Codeword2 = null,
+        ?\Knightar\StampsSoapClient\Type\Address    $MailingAddress = null,
+        ?string                                     $PromoCode = null,
+        ?\Knightar\StampsSoapClient\Type\CreditCard $CreditCard = null,
+        ?\Knightar\StampsSoapClient\Type\AchAccount $AchAccount = null,
+        ?\Knightar\StampsSoapClient\Type\PPLAccount $PPL = null,
+        ?bool                                       $SendEmail = null,
+        ?bool                                       $ResetPasswordAfterRegistration = null,
+        ?string                                     $UserCurrency = null,
+        ?string                                     $IovationBlackBox = null
+    )
     {
         $this->IntegrationID = $IntegrationID;
         $this->UserName = $UserName;
         $this->Password = $Password;
+        $this->PhysicalAddress = $PhysicalAddress;
+        $this->MachineInfo = $MachineInfo;
+        $this->Email = $Email;
+        $this->AccountType = $AccountType;
         $this->Codeword1Type = $Codeword1Type;
         $this->Codeword1 = $Codeword1;
         $this->Codeword2Type = $Codeword2Type;
         $this->Codeword2 = $Codeword2;
-        $this->PhysicalAddress = $PhysicalAddress;
         $this->MailingAddress = $MailingAddress;
-        $this->MachineInfo = $MachineInfo;
-        $this->Email = $Email;
-        $this->AccountType = $AccountType;
         $this->PromoCode = $PromoCode;
         $this->CreditCard = $CreditCard;
         $this->AchAccount = $AchAccount;

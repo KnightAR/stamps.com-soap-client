@@ -106,17 +106,38 @@ class CreateNetStampsIndicia implements RequestInterface
      */
     private ?string $ImageDpi = null;
 
+    private const IMAGE_TYPE_AUTO = 'Auto';
+    private const IMAGE_TYPE_PNG = 'Png';
+    private const IMAGE_TYPE_GIF = 'Gif';
+    private const IMAGE_TYPE_PDF = 'Pdf';
+    private const IMAGE_TYPE_EPL = 'Epl';
+    private const IMAGE_TYPE_JPG = 'Jpg';
+    private const IMAGE_TYPE_PRINT_ONCE_PDF = 'PrintOncePdf';
+    private const IMAGE_TYPE_ENCRYPTED_PNG_URL = 'EncryptedPngUrl';
+    private const IMAGE_TYPE_ZPL = 'Zpl';
+    private const IMAGE_TYPE_AZPL = 'AZpl';
+    private const IMAGE_TYPE_BZPL = 'BZpl';
+    private const IMAGE_TYPE_BMP = 'Bmp';
+    private const IMAGE_TYPE_BMP_MONOCHROME = 'BmpMonochrome';
+    private const IMAGE_TYPE_PNG_MONOCHROME = 'PngMonochrome';
+    private const IMAGE_TYPE_JPG_MONOCHROME = 'JpgMonochrome';
+    private const IMAGE_TYPE_GIF_MONOCHROME = 'GifMonochrome';
+
+    private const IMAGE_DPI_DEFAULT = 'ImageDpiDefault';
+    private const IMAGE_DPI_200 = 'ImageDpi200';
+    private const IMAGE_DPI_300 = 'ImageDpi300';
+    private const IMAGE_DPI_203 = 'ImageDpi203';
+    private const IMAGE_DPI_96 = 'ImageDpi96';
+    private const IMAGE_DPI_150 = 'ImageDpi150';
+
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $IntegratorTxId
-     * @param null | string $Layout
      * @param \Knightar\StampsSoapClient\Type\ArrayOfNetStampV42 $NetStamps
      * @param null | \Knightar\StampsSoapClient\Type\Address $ReturnTo
      * @param null | bool $SampleOnly
-     * @param null | 'Auto' | 'Png' | 'Gif' | 'Pdf' | 'Epl' | 'Jpg' | 'PrintOncePdf' | 'EncryptedPngUrl' | 'Zpl' | 'AZpl' | 'BZpl' | 'Bmp' | 'BmpMonochrome' | 'PngMonochrome' | 'JpgMonochrome' | 'GifMonochrome' $ImageType
+     * @param null | string $ImageType
      * @param null | int $cost_code_id
      * @param null | int $ImageId
      * @param null | bool $ReturnIndiciaData
@@ -128,9 +149,33 @@ class CreateNetStampsIndicia implements RequestInterface
      * @param null | string $Reference4
      * @param null | \Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo
      * @param null | bool $ReturnImageData
-     * @param null | 'ImageDpiDefault' | 'ImageDpi200' | 'ImageDpi300' | 'ImageDpi203' | 'ImageDpi96' | 'ImageDpi150' $ImageDpi
+     * @param null | string $ImageDpi
+     * @param null | string $Layout
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $IntegratorTxId, ?string $Layout, \Knightar\StampsSoapClient\Type\ArrayOfNetStampV42 $NetStamps, ?\Knightar\StampsSoapClient\Type\Address $ReturnTo, ?bool $SampleOnly, ?string $ImageType, ?int $cost_code_id, ?int $ImageId, ?bool $ReturnIndiciaData, ?string $RateToken, ?string $memo, ?string $Reference1, ?string $Reference2, ?string $Reference3, ?string $Reference4, ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo, ?bool $ReturnImageData, ?string $ImageDpi)
+    public function __construct(
+        string                                                 $IntegratorTxId,
+        \Knightar\StampsSoapClient\Type\ArrayOfNetStampV42     $NetStamps,
+        ?\Knightar\StampsSoapClient\Type\Address               $ReturnTo = null,
+        ?bool                                                  $SampleOnly = null,
+        ?string                                                $ImageType = null,
+        ?int                                                   $cost_code_id = null,
+        ?int                                                   $ImageId = null,
+        ?bool                                                  $ReturnIndiciaData = null,
+        ?string                                                $RateToken = null,
+        ?string                                                $memo = null,
+        ?string                                                $Reference1 = null,
+        ?string                                                $Reference2 = null,
+        ?string                                                $Reference3 = null,
+        ?string                                                $Reference4 = null,
+        ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo = null,
+        ?bool                                                  $ReturnImageData = null,
+        ?string                                                $ImageDpi = null,
+        ?string                                                $Layout = null,
+        ?string                                                $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials           $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

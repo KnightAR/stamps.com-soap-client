@@ -39,21 +39,27 @@ class GetBalanceHistory implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | int $TransactionsPerPage
      * @param \DateTimeInterface $TransactionDateMin
+     * @param null | int $TransactionsPerPage
      * @param null | \DateTimeInterface $TransactionDateMax
      * @param \Knightar\StampsSoapClient\Type\ArrayOfTransactionType $Filters
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?int $TransactionsPerPage, \DateTimeInterface $TransactionDateMin, ?\DateTimeInterface $TransactionDateMax, \Knightar\StampsSoapClient\Type\ArrayOfTransactionType $Filters)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\ArrayOfTransactionType $Filters,
+        \DateTimeInterface                                     $TransactionDateMin,
+        ?\DateTimeInterface                                    $TransactionDateMax = null,
+        ?int                                                   $TransactionsPerPage = null,
+        ?string                                                $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials           $Credentials = null
+    )
     {
-        $this->Authenticator = $Authenticator;
-        $this->Credentials = $Credentials;
-        $this->TransactionsPerPage = $TransactionsPerPage;
         $this->TransactionDateMin = $TransactionDateMin;
         $this->TransactionDateMax = $TransactionDateMax;
-        $this->Filters = $Filters;
+        $this->TransactionsPerPage = $TransactionsPerPage;
+        $this->Authenticator = $Authenticator;
+        $this->Credentials = $Credentials;
     }
 
     /**

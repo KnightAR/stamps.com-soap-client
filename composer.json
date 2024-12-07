@@ -15,8 +15,12 @@
         }
     },
     "require": {
+        "ext-soap" : "*",
+        "ext-intl" : "*",
         "symfony/http-client": "^7.2",
         "nyholm/psr7": "^1.8",
-        "phpro/soap-client": "^3.4"
+        "phpro/soap-client": "^3.4",
+        "symfony/cache": "^7.2",
+        "psr/simple-cache": "^3.0"
     }
 }

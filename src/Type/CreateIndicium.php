@@ -264,18 +264,13 @@ class CreateIndicium implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $IntegratorTxID
-     * @param null | string $TrackingNumber
      * @param \Knightar\StampsSoapClient\Type\RateV46 $Rate
+     * @param null | string $TrackingNumber
      * @param null | \Knightar\StampsSoapClient\Type\Address $ReturnTo
      * @param null | string $CustomerID
      * @param null | \Knightar\StampsSoapClient\Type\CustomsV8 $Customs
      * @param null | bool $SampleOnly
-     * @param null | 'Normal' | 'NoPostage' $PostageMode
-     * @param null | 'Auto' | 'Png' | 'Gif' | 'Pdf' | 'Epl' | 'Jpg' | 'PrintOncePdf' | 'EncryptedPngUrl' | 'Zpl' | 'AZpl' | 'BZpl' | 'Bmp' | 'BmpMonochrome' | 'PngMonochrome' | 'JpgMonochrome' | 'GifMonochrome' $ImageType
-     * @param null | 'Default' | 'High' $EltronPrinterDPIType
      * @param null | string $memo
      * @param null | int $cost_code_id
      * @param null | bool $deliveryNotification
@@ -287,17 +282,14 @@ class CreateIndicium implements RequestInterface
      * @param null | bool $printMemo
      * @param null | bool $printInstructions
      * @param null | bool $requestPostageHash
-     * @param null | 'Undefined' | 'Return' | 'Abandon' | 'Redirect' $nonDeliveryOption
      * @param null | \Knightar\StampsSoapClient\Type\Address $RedirectTo
      * @param null | string $OutboundTransactionID
      * @param null | string $OriginalPostageHash
      * @param null | bool $ReturnImageData
      * @param null | string $InternalTransactionNumber
-     * @param null | 'Default' | 'Letter85x11' | 'LabelSize' $PaperSize
      * @param null | \Knightar\StampsSoapClient\Type\LabelRecipientInfo $EmailLabelTo
      * @param null | bool $PayOnPrint
      * @param null | int $ReturnLabelExpirationDays
-     * @param null | 'ImageDpiDefault' | 'ImageDpi200' | 'ImageDpi300' | 'ImageDpi203' | 'ImageDpi96' | 'ImageDpi150' $ImageDpi
      * @param null | string $RateToken
      * @param null | string $OrderId
      * @param null | bool $BypassCleanseAddress
@@ -308,16 +300,79 @@ class CreateIndicium implements RequestInterface
      * @param null | string $Reference4
      * @param null | bool $ReturnIndiciumData
      * @param null | \Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo
-     * @param null | 'Unknown' | 'MarketingMail' | 'Periodicals' | 'NewsPeriodicals' | 'BoundMedia' | 'ParcelSelect' | 'OtherPackageService' $EnclosedServiceType
-     * @param null | 'Unknown' | 'Letters' | 'Flats' | 'Irregular Parcels' | 'Machinable Parcels' | 'Non-Machinable Parcels' $EnclosedPackageType
      * @param null | \Knightar\StampsSoapClient\Type\OrderDetails $OrderDetails
      * @param null | string $BrandingId
      * @param null | string $NotificationSettingId
      * @param null | string $GroupCode
      * @param null | string $Description
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
+     * @param null | 'Normal' | 'NoPostage' $PostageMode
+     * @param null | 'Auto' | 'Png' | 'Gif' | 'Pdf' | 'Epl' | 'Jpg' | 'PrintOncePdf' | 'EncryptedPngUrl' | 'Zpl' | 'AZpl' | 'BZpl' | 'Bmp' | 'BmpMonochrome' | 'PngMonochrome' | 'JpgMonochrome' | 'GifMonochrome' $ImageType
+     * @param null | 'Default' | 'High' $EltronPrinterDPIType
+     * @param null | 'Undefined' | 'Return' | 'Abandon' | 'Redirect' $nonDeliveryOption
+     * @param null | 'Default' | 'Letter85x11' | 'LabelSize' $PaperSize
+     * @param null | 'ImageDpiDefault' | 'ImageDpi200' | 'ImageDpi300' | 'ImageDpi203' | 'ImageDpi96' | 'ImageDpi150' $ImageDpi
+     * @param null | 'Unknown' | 'MarketingMail' | 'Periodicals' | 'NewsPeriodicals' | 'BoundMedia' | 'ParcelSelect' | 'OtherPackageService' $EnclosedServiceType
+     * @param null | 'Unknown' | 'Letters' | 'Flats' | 'Irregular Parcels' | 'Machinable Parcels' | 'Non-Machinable Parcels' $EnclosedPackageType
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $IntegratorTxID, ?string $TrackingNumber, \Knightar\StampsSoapClient\Type\RateV46 $Rate, ?\Knightar\StampsSoapClient\Type\Address $ReturnTo, ?string $CustomerID, ?\Knightar\StampsSoapClient\Type\CustomsV8 $Customs, ?bool $SampleOnly, ?string $PostageMode, ?string $ImageType, ?string $EltronPrinterDPIType, ?string $memo, ?int $cost_code_id, ?bool $deliveryNotification, ?\Knightar\StampsSoapClient\Type\ShipmentNotification $ShipmentNotification, ?int $rotationDegrees, ?int $horizontalOffset, ?int $verticalOffset, ?int $printDensity, ?bool $printMemo, ?bool $printInstructions, ?bool $requestPostageHash, ?string $nonDeliveryOption, ?\Knightar\StampsSoapClient\Type\Address $RedirectTo, ?string $OutboundTransactionID, ?string $OriginalPostageHash, ?bool $ReturnImageData, ?string $InternalTransactionNumber, ?string $PaperSize, ?\Knightar\StampsSoapClient\Type\LabelRecipientInfo $EmailLabelTo, ?bool $PayOnPrint, ?int $ReturnLabelExpirationDays, ?string $ImageDpi, ?string $RateToken, ?string $OrderId, ?bool $BypassCleanseAddress, ?int $ImageId, ?string $Reference1, ?string $Reference2, ?string $Reference3, ?string $Reference4, ?bool $ReturnIndiciumData, ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo, ?string $EnclosedServiceType, ?string $EnclosedPackageType, ?\Knightar\StampsSoapClient\Type\OrderDetails $OrderDetails, ?string $BrandingId, ?string $NotificationSettingId, ?string $GroupCode, ?string $Description)
+    public function __construct(
+        string                                                 $IntegratorTxID,
+        \Knightar\StampsSoapClient\Type\RateV46                $Rate,
+        ?string                                                $TrackingNumber = null,
+        ?\Knightar\StampsSoapClient\Type\Address               $ReturnTo = null,
+        ?string                                                $CustomerID = null,
+        ?\Knightar\StampsSoapClient\Type\CustomsV8             $Customs = null,
+        ?bool                                                  $SampleOnly = null,
+        ?string                                                $memo = null,
+        ?int                                                   $cost_code_id = null,
+        ?bool                                                  $deliveryNotification = null,
+        ?\Knightar\StampsSoapClient\Type\ShipmentNotification  $ShipmentNotification = null,
+        ?int                                                   $rotationDegrees = null,
+        ?int                                                   $horizontalOffset = null,
+        ?int                                                   $verticalOffset = null,
+        ?int                                                   $printDensity = null,
+        ?bool                                                  $printMemo = null,
+        ?bool                                                  $printInstructions = null,
+        ?bool                                                  $requestPostageHash = null,
+        ?\Knightar\StampsSoapClient\Type\Address               $RedirectTo = null,
+        ?string                                                $OutboundTransactionID = null,
+        ?string                                                $OriginalPostageHash = null,
+        ?bool                                                  $ReturnImageData = null,
+        ?string                                                $InternalTransactionNumber = null,
+        ?\Knightar\StampsSoapClient\Type\LabelRecipientInfo    $EmailLabelTo = null,
+        ?bool                                                  $PayOnPrint = null,
+        ?int                                                   $ReturnLabelExpirationDays = null,
+        ?string                                                $RateToken = null,
+        ?string                                                $OrderId = null,
+        ?bool                                                  $BypassCleanseAddress = null,
+        ?int                                                   $ImageId = null,
+        ?string                                                $Reference1 = null,
+        ?string                                                $Reference2 = null,
+        ?string                                                $Reference3 = null,
+        ?string                                                $Reference4 = null,
+        ?bool                                                  $ReturnIndiciumData = null,
+        ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo = null,
+        ?\Knightar\StampsSoapClient\Type\OrderDetails          $OrderDetails = null,
+        ?string                                                $BrandingId = null,
+        ?string                                                $NotificationSettingId = null,
+        ?string                                                $GroupCode = null,
+        ?string                                                $Description = null,
+        ?string                                                $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials           $Credentials = null,
+        ?string                                                $PostageMode = 'Normal',
+        ?string                                                $ImageType = 'Auto',
+        ?string                                                $EltronPrinterDPIType = 'Default',
+        ?string                                                $nonDeliveryOption = 'Undefined',
+        ?string                                                $PaperSize = 'Default',
+        ?string                                                $ImageDpi = 'ImageDpiDefault',
+        ?string                                                $EnclosedServiceType = 'Unknown',
+        ?string                                                $EnclosedPackageType = 'Unknown'
+    )
     {
+        if (is_null($Rate->getAmount()) || is_null($Rate->getMaxAmount())) {
+            throw new \InvalidArgumentException("Rate must have an amount and max amount set. Please run though getRates method.");
+        }
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
         $this->IntegratorTxID = $IntegratorTxID;
@@ -370,6 +425,60 @@ class CreateIndicium implements RequestInterface
         $this->GroupCode = $GroupCode;
         $this->Description = $Description;
     }
+
+    const POSTAGE_MODE_NORMAL = 'Normal';
+    const POSTAGE_MODE_NOPOSTAGE = 'NoPostage';
+
+    const IMAGE_TYPE_AUTO = 'Auto';
+    const IMAGE_TYPE_PNG = 'Png';
+    const IMAGE_TYPE_GIF = 'Gif';
+    const IMAGE_TYPE_PDF = 'Pdf';
+    const IMAGE_TYPE_EPL = 'Epl';
+    const IMAGE_TYPE_JPG = 'Jpg';
+    const IMAGE_TYPE_PRINTONCEPDF = 'PrintOncePdf';
+    const IMAGE_TYPE_ENCRYPTEDPNGURL = 'EncryptedPngUrl';
+    const IMAGE_TYPE_ZPL = 'Zpl';
+    const IMAGE_TYPE_AZPL = 'AZpl';
+    const IMAGE_TYPE_BZPL = 'BZpl';
+    const IMAGE_TYPE_BMP = 'Bmp';
+    const IMAGE_TYPE_BMPMONOCHROME = 'BmpMonochrome';
+    const IMAGE_TYPE_PNGMONOCHROME = 'PngMonochrome';
+    const IMAGE_TYPE_JPGMONOCHROME = 'JpgMonochrome';
+    const IMAGE_TYPE_GIFMONOCHROME = 'GifMonochrome';
+
+    const ELTRON_PRINTER_DPI_TYPE_DEFAULT = 'Default';
+    const ELTRON_PRINTER_DPI_TYPE_HIGH = 'High';
+
+    const NON_DELIVERY_OPTION_UNDEFINED = 'Undefined';
+    const NON_DELIVERY_OPTION_RETURN = 'Return';
+    const NON_DELIVERY_OPTION_ABANDON = 'Abandon';
+    const NON_DELIVERY_OPTION_REDIRECT = 'Redirect';
+
+    const PAPER_SIZE_DEFAULT = 'Default';
+    const PAPER_SIZE_LETTER85X11 = 'Letter85x11';
+    const PAPER_SIZE_LABEL_SIZE = 'LabelSize';
+
+    const IMAGE_DPI_DEFAULT = 'ImageDpiDefault';
+    const IMAGE_DPI_200 = 'ImageDpi200';
+    const IMAGE_DPI_300 = 'ImageDpi300';
+    const IMAGE_DPI_203 = 'ImageDpi203';
+    const IMAGE_DPI_96 = 'ImageDpi96';
+    const IMAGE_DPI_150 = 'ImageDpi150';
+
+    const ENCLOSED_SERVICE_TYPE_UNKNOWN = 'Unknown';
+    const ENCLOSED_SERVICE_TYPE_MARKETINGMAIL = 'MarketingMail';
+    const ENCLOSED_SERVICE_TYPE_PERIODICALS = 'Periodicals';
+    const ENCLOSED_SERVICE_TYPE_NEWSPERIODICALS = 'NewsPeriodicals';
+    const ENCLOSED_SERVICE_TYPE_BOUNDMEDIA = 'BoundMedia';
+    const ENCLOSED_SERVICE_TYPE_PARCELSELECT = 'ParcelSelect';
+    const ENCLOSED_SERVICE_TYPE_OTHERPACKAGESERVICE = 'OtherPackageService';
+
+    const ENCLOSED_PACKAGE_TYPE_UNKNOWN = 'Unknown';
+    const ENCLOSED_PACKAGE_TYPE_LETTERS = 'Letters';
+    const ENCLOSED_PACKAGE_TYPE_FLATS = 'Flats';
+    const ENCLOSED_PACKAGE_TYPE_IRREGULARPARCELS = 'Irregular Parcels';
+    const ENCLOSED_PACKAGE_TYPE_MACHINABLEPARCELS = 'Machinable Parcels';
+    const ENCLOSED_PACKAGE_TYPE_NONMACHINABLEPARCELS = 'Non-Machinable Parcels';
 
     /**
      * @return null | string
@@ -465,6 +574,9 @@ class CreateIndicium implements RequestInterface
      */
     public function withRate(\Knightar\StampsSoapClient\Type\RateV46 $Rate) : static
     {
+        if (is_null($Rate->getAmount()) || is_null($Rate->getMaxAmount())) {
+            throw new \InvalidArgumentException("Rate must have an amount and max amount set. Please run though getRates method.");
+        }
         $new = clone $this;
         $new->Rate = $Rate;
 

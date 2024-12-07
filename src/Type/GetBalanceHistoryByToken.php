@@ -27,14 +27,17 @@ class GetBalanceHistoryByToken implements RequestInterface
     private ?int $PageNumber = null;
 
     /**
-     * Constructor
-     *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $BalanceHistoryToken
      * @param null | int $PageNumber
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $BalanceHistoryToken, ?int $PageNumber)
+    public function __construct(
+        string                                       $BalanceHistoryToken,
+        ?int                                         $PageNumber = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

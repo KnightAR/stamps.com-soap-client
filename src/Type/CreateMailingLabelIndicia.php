@@ -112,16 +112,113 @@ class CreateMailingLabelIndicia implements RequestInterface
     private ?bool $PrintFromAddress = null;
 
     /**
+     * @var string
+     */
+    public const MODE_NORMAL = 'Normal';
+
+    /**
+     * @var string
+     */
+    public const MODE_SAMPLE = 'Sample';
+
+    /**
+     * @var string
+     */
+    public const MODE_NO_POSTAGE = 'NoPostage';
+
+    /**
+     * @var string
+     */
+    public const MODE_PREVIEW = 'Preview';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_AUTO = 'Auto';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_PNG = 'Png';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_GIF = 'Gif';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_PDF = 'Pdf';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_EPL = 'Epl';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_JPG = 'Jpg';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_PRINT_ONCE_PDF = 'PrintOncePdf';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_ENCRYPTED_PNG_URL = 'EncryptedPngUrl';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_ZPL = 'Zpl';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_AZPL = 'AZpl';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_BZPL = 'BZpl';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_BMP = 'Bmp';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_BMP_MONOCHROME = 'BmpMonochrome';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_PNG_MONOCHROME = 'PngMonochrome';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_JPG_MONOCHROME = 'JpgMonochrome';
+
+    /**
+     * @var string
+     */
+    public const IMAGE_TYPE_GIF_MONOCHROME = 'GifMonochrome';
+
+    /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $IntegratorTxId
      * @param string $Layout
-     * @param null | bool $PrintToAddress
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfIndiciumInfoV39 $IndiciumInfo
      * @param null | int $StartRow
      * @param null | int $StartColumn
-     * @param \Knightar\StampsSoapClient\Type\ArrayOfIndiciumInfoV39 $IndiciumInfo
      * @param null | 'Normal' | 'Sample' | 'NoPostage' | 'Preview' $Mode
      * @param null | 'Auto' | 'Png' | 'Gif' | 'Pdf' | 'Epl' | 'Jpg' | 'PrintOncePdf' | 'EncryptedPngUrl' | 'Zpl' | 'AZpl' | 'BZpl' | 'Bmp' | 'BmpMonochrome' | 'PngMonochrome' | 'JpgMonochrome' | 'GifMonochrome' $ImageType
      * @param null | string $RateToken
@@ -135,17 +232,39 @@ class CreateMailingLabelIndicia implements RequestInterface
      * @param null | \Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo
      * @param null | int $ImageId
      * @param null | bool $PrintFromAddress
+     * @param null | bool $PrintToAddress
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $IntegratorTxId, string $Layout, ?bool $PrintToAddress, ?int $StartRow, ?int $StartColumn, \Knightar\StampsSoapClient\Type\ArrayOfIndiciumInfoV39 $IndiciumInfo, ?string $Mode, ?string $ImageType, ?string $RateToken, ?string $memo, ?bool $BypassCleanseAddress, ?string $Reference1, ?string $Reference2, ?string $Reference3, ?string $Reference4, ?bool $ReturnIndiciumData, ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo, ?int $ImageId, ?bool $PrintFromAddress)
+    public function __construct(
+        string                                                 $IntegratorTxId,
+        string                                                 $Layout,
+        \Knightar\StampsSoapClient\Type\ArrayOfIndiciumInfoV39 $IndiciumInfo,
+        ?int                                                   $StartRow = null,
+        ?int                                                   $StartColumn = null,
+        ?string                                                $Mode = null,
+        ?string                                                $ImageType = null,
+        ?string                                                $RateToken = null,
+        ?string                                                $memo = null,
+        ?bool                                                  $BypassCleanseAddress = null,
+        ?string                                                $Reference1 = null,
+        ?string                                                $Reference2 = null,
+        ?string                                                $Reference3 = null,
+        ?string                                                $Reference4 = null,
+        ?bool                                                  $ReturnIndiciumData = null,
+        ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo = null,
+        ?int                                                   $ImageId = null,
+        ?bool                                                  $PrintFromAddress = null,
+        ?bool                                                  $PrintToAddress = null,
+        ?string                                                $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials           $Credentials = null
+    )
     {
-        $this->Authenticator = $Authenticator;
-        $this->Credentials = $Credentials;
         $this->IntegratorTxId = $IntegratorTxId;
         $this->Layout = $Layout;
-        $this->PrintToAddress = $PrintToAddress;
+        $this->IndiciumInfo = $IndiciumInfo;
         $this->StartRow = $StartRow;
         $this->StartColumn = $StartColumn;
-        $this->IndiciumInfo = $IndiciumInfo;
         $this->Mode = $Mode;
         $this->ImageType = $ImageType;
         $this->RateToken = $RateToken;
@@ -159,6 +278,9 @@ class CreateMailingLabelIndicia implements RequestInterface
         $this->ExtendedPostageInfo = $ExtendedPostageInfo;
         $this->ImageId = $ImageId;
         $this->PrintFromAddress = $PrintFromAddress;
+        $this->PrintToAddress = $PrintToAddress;
+        $this->Authenticator = $Authenticator;
+        $this->Credentials = $Credentials;
     }
 
     /**

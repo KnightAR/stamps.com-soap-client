@@ -34,13 +34,19 @@ class CancelIndicium implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | \Knightar\StampsSoapClient\Type\ArrayOfString $TrackingNumbers
-     * @param null | \Knightar\StampsSoapClient\Type\ArrayOfGuid $StampsTxIDs
-     * @param null | bool $SendEmail
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfString|null $TrackingNumbers
+     * @param \Knightar\StampsSoapClient\Type\ArrayOfGuid|null $StampsTxIDs
+     * @param bool|null $SendEmail
+     * @param null|string $Authenticator
+     * @param null|\Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?\Knightar\StampsSoapClient\Type\ArrayOfString $TrackingNumbers, ?\Knightar\StampsSoapClient\Type\ArrayOfGuid $StampsTxIDs, ?bool $SendEmail)
+    public function __construct(
+        ?\Knightar\StampsSoapClient\Type\ArrayOfString $TrackingNumbers = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfGuid   $StampsTxIDs = null,
+        ?bool                                          $SendEmail = null,
+        ?string                                        $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials   $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

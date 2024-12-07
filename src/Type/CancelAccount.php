@@ -44,23 +44,31 @@ class CancelAccount implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $Address
      * @param string $State
      * @param string $City
      * @param string $Zip
      * @param null | bool $SendEmail
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $Address, string $State, string $City, string $Zip, ?bool $SendEmail)
+    public function __construct(
+        string                                       $Address,
+        string                                       $State,
+        string                                       $City,
+        string                                       $Zip,
+        ?bool                                        $SendEmail = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
-        $this->Authenticator = $Authenticator;
-        $this->Credentials = $Credentials;
         $this->Address = $Address;
         $this->State = $State;
         $this->City = $City;
         $this->Zip = $Zip;
         $this->SendEmail = $SendEmail;
+        $this->Authenticator = $Authenticator;
+        $this->Credentials = $Credentials;
     }
 
     /**

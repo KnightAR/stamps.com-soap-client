@@ -24,15 +24,19 @@ class DeleteNotificationSetting implements RequestInterface
     /**
      * Constructor
      *
+     * @param string $NotificationSettingId
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param string $NotificationSettingId
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $NotificationSettingId)
+    public function __construct(
+        string                                       $NotificationSettingId,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
+        $this->NotificationSettingId = $NotificationSettingId;
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
-        $this->NotificationSettingId = $NotificationSettingId;
     }
 
     /**

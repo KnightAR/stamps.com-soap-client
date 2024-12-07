@@ -24,11 +24,15 @@ class DeleteBranding implements RequestInterface
     /**
      * Constructor
      *
+     * @param string $BrandingId
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param string $BrandingId
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $BrandingId)
+    public function __construct(
+        string                                       $BrandingId,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

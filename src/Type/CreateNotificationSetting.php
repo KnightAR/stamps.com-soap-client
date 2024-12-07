@@ -34,19 +34,25 @@ class CreateNotificationSetting implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | \Knightar\StampsSoapClient\Type\NotificationSettingProperties $NotificationSettingProperties
-     * @param null | string $Reference
-     * @param null | bool $SetAsDefault
+     * @param \Knightar\StampsSoapClient\Type\NotificationSettingProperties|null $NotificationSettingProperties
+     * @param string|null $Reference
+     * @param bool|null $SetAsDefault
+     * @param null|string $Authenticator
+     * @param null|\Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?\Knightar\StampsSoapClient\Type\NotificationSettingProperties $NotificationSettingProperties, ?string $Reference, ?bool $SetAsDefault)
+    public function __construct(
+        ?\Knightar\StampsSoapClient\Type\NotificationSettingProperties $NotificationSettingProperties = null,
+        ?string                                                        $Reference = null,
+        ?bool                                                          $SetAsDefault = null,
+        ?string                                                        $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials                   $Credentials = null
+    )
     {
-        $this->Authenticator = $Authenticator;
-        $this->Credentials = $Credentials;
         $this->NotificationSettingProperties = $NotificationSettingProperties;
         $this->Reference = $Reference;
         $this->SetAsDefault = $SetAsDefault;
+        $this->Authenticator = $Authenticator;
+        $this->Credentials = $Credentials;
     }
 
     /**

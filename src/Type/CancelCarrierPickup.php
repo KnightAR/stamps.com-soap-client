@@ -32,21 +32,46 @@ class CancelCarrierPickup implements RequestInterface
     private ?string $PickupType = null;
 
     /**
+     * Available Carriers
+     */
+    const CARRIER_ALL = 'All';
+    const CARRIER_USPS = 'USPS';
+    const CARRIER_FEDEX = 'FedEx';
+    const CARRIER_DHL_EXPRESS = 'DHLExpress';
+    const CARRIER_UPS = 'UPS';
+    const CARRIER_CANADA_POST = 'CanadaPost';
+    const CARRIER_DHL_ECOMMERCE = 'DhlECommerce';
+    const CARRIER_ZORBIT = 'Zorbit';
+
+    /**
+     * Available PickupTypes
+     */
+    const PICKUP_TYPE_DEFAULT = 'Default';
+    const PICKUP_TYPE_AUTO_PICKUP = 'AutoPickup';
+
+    /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $ConfirmationNumber
+     * @param null | string $Carrier
      * @param null | 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
      * @param null | 'Default' | 'AutoPickup' $PickupType
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $ConfirmationNumber, ?string $Carrier, ?string $PickupType)
+    public function __construct(
+        string                                       $ConfirmationNumber,
+        ?string                                      $Carrier = null,
+        ?string                                      $PickupType = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
-        $this->Authenticator = $Authenticator;
-        $this->Credentials = $Credentials;
         $this->ConfirmationNumber = $ConfirmationNumber;
         $this->Carrier = $Carrier;
         $this->PickupType = $PickupType;
+        $this->Authenticator = $Authenticator;
+        $this->Credentials = $Credentials;
     }
 
     /**

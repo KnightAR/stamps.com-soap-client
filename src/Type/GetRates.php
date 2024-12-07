@@ -27,20 +27,32 @@ class GetRates implements RequestInterface
     private ?string $Carrier = null;
 
     /**
-     * Constructor
-     *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param \Knightar\StampsSoapClient\Type\RateV46 $Rate
      * @param null | 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\RateV46 $Rate, ?string $Carrier)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\RateV46      $Rate,
+        ?string                                      $Carrier = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
-        $this->Authenticator = $Authenticator;
-        $this->Credentials = $Credentials;
         $this->Rate = $Rate;
         $this->Carrier = $Carrier;
+        $this->Authenticator = $Authenticator;
+        $this->Credentials = $Credentials;
     }
+
+    public const CARRIER_ALL = 'All';
+    public const CARRIER_USPS = 'USPS';
+    public const CARRIER_FEDEX = 'FedEx';
+    public const CARRIER_DHL_EXPRESS = 'DHLExpress';
+    public const CARRIER_UPS = 'UPS';
+    public const CARRIER_CANADA_POST = 'CanadaPost';
+    public const CARRIER_DHL_ECOMMERCE = 'DhlECommerce';
+    public const CARRIER_ZORBIT = 'Zorbit';
 
     /**
      * @return null | string

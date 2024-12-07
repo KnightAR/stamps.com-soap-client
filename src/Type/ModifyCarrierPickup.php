@@ -44,15 +44,23 @@ class ModifyCarrierPickup implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
+     * @param string $ConfirmationNumber
      * @param null | \Knightar\StampsSoapClient\Type\CarrierPickupContactInformation $ContactInformation
      * @param null | \Knightar\StampsSoapClient\Type\CarrierPickupPackageInformation $PackageInformation
-     * @param string $ConfirmationNumber
      * @param null | 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
      * @param null | 'Default' | 'AutoPickup' $PickupType
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?\Knightar\StampsSoapClient\Type\CarrierPickupContactInformation $ContactInformation, ?\Knightar\StampsSoapClient\Type\CarrierPickupPackageInformation $PackageInformation, string $ConfirmationNumber, ?string $Carrier, ?string $PickupType)
+    public function __construct(
+        string                                                           $ConfirmationNumber,
+        ?\Knightar\StampsSoapClient\Type\CarrierPickupContactInformation $ContactInformation = null,
+        ?\Knightar\StampsSoapClient\Type\CarrierPickupPackageInformation $PackageInformation = null,
+        ?string                                                          $Carrier = null,
+        ?string                                                          $PickupType = null,
+        ?string                                                          $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials                     $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
@@ -62,6 +70,18 @@ class ModifyCarrierPickup implements RequestInterface
         $this->Carrier = $Carrier;
         $this->PickupType = $PickupType;
     }
+
+    public const CARRIER_ALL = 'All';
+    public const CARRIER_USPS = 'USPS';
+    public const CARRIER_FEDEX = 'FedEx';
+    public const CARRIER_DHL_EXPRESS = 'DHLExpress';
+    public const CARRIER_UPS = 'UPS';
+    public const CARRIER_CANADA_POST = 'CanadaPost';
+    public const CARRIER_DHL_ECOMMERCE = 'DhlECommerce';
+    public const CARRIER_ZORBIT = 'Zorbit';
+
+    public const PICKUP_TYPE_DEFAULT = 'Default';
+    public const PICKUP_TYPE_AUTO_PICKUP = 'AutoPickup';
 
     /**
      * @return null | string

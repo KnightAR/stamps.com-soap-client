@@ -19,10 +19,13 @@ class GetAccountInfo implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
+     * @param null|string $Authenticator
+     * @param null|\Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials)
+    public function __construct(
+        ?string $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

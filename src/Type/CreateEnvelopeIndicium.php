@@ -136,11 +136,41 @@ class CreateEnvelopeIndicium implements RequestInterface
      */
     private ?string $ImageDpi = null;
 
+// Constants for ImageDpi
+    public const IMAGE_DPI_DEFAULT = 'ImageDpiDefault';
+    public const IMAGE_DPI_200 = 'ImageDpi200';
+    public const IMAGE_DPI_300 = 'ImageDpi300';
+    public const IMAGE_DPI_203 = 'ImageDpi203';
+    public const IMAGE_DPI_96 = 'ImageDpi96';
+    public const IMAGE_DPI_150 = 'ImageDpi150';
+
+// Constants for Mode
+    public const MODE_NORMAL = 'Normal';
+    public const MODE_SAMPLE = 'Sample';
+    public const MODE_NO_POSTAGE = 'NoPostage';
+    public const MODE_PREVIEW = 'Preview';
+
+// Constants for ImageType
+    public const IMAGE_TYPE_AUTO = 'Auto';
+    public const IMAGE_TYPE_PNG = 'Png';
+    public const IMAGE_TYPE_GIF = 'Gif';
+    public const IMAGE_TYPE_PDF = 'Pdf';
+    public const IMAGE_TYPE_EPL = 'Epl';
+    public const IMAGE_TYPE_JPG = 'Jpg';
+    public const IMAGE_TYPE_PRINT_ONCE_PDF = 'PrintOncePdf';
+    public const IMAGE_TYPE_ENCRYPTED_PNG_URL = 'EncryptedPngUrl';
+    public const IMAGE_TYPE_ZPL = 'Zpl';
+    public const IMAGE_TYPE_AZPL = 'AZpl';
+    public const IMAGE_TYPE_BZPL = 'BZpl';
+    public const IMAGE_TYPE_BMP = 'Bmp';
+    public const IMAGE_TYPE_BMP_MONOCHROME = 'BmpMonochrome';
+    public const IMAGE_TYPE_PNG_MONOCHROME = 'PngMonochrome';
+    public const IMAGE_TYPE_JPG_MONOCHROME = 'JpgMonochrome';
+    public const IMAGE_TYPE_GIF_MONOCHROME = 'GifMonochrome';
+
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $IntegratorTxID
      * @param \Knightar\StampsSoapClient\Type\RateV46 $Rate
      * @param null | \Knightar\StampsSoapClient\Type\Address $ReturnTo
@@ -165,8 +195,37 @@ class CreateEnvelopeIndicium implements RequestInterface
      * @param null | \Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo
      * @param null | bool $ReturnImageData
      * @param null | 'ImageDpiDefault' | 'ImageDpi200' | 'ImageDpi300' | 'ImageDpi203' | 'ImageDpi96' | 'ImageDpi150' $ImageDpi
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $IntegratorTxID, \Knightar\StampsSoapClient\Type\RateV46 $Rate, ?\Knightar\StampsSoapClient\Type\Address $ReturnTo, ?bool $PrintFromAddress, ?bool $PrintToAddress, ?string $CustomerID, ?string $Mode, ?string $ImageType, ?int $CostCodeId, ?bool $HideFIM, ?string $RateToken, ?string $OrderId, ?string $memo, ?bool $BypassCleanseAddress, ?int $ImageId, ?int $ImageId2, ?string $Reference1, ?string $Reference2, ?string $Reference3, ?string $Reference4, ?bool $ReturnIndiciumData, ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo, ?bool $ReturnImageData, ?string $ImageDpi)
+    public function __construct(
+        string                                                 $IntegratorTxID,
+        \Knightar\StampsSoapClient\Type\RateV46                $Rate,
+        ?\Knightar\StampsSoapClient\Type\Address               $ReturnTo = null,
+        ?bool                                                  $PrintFromAddress = null,
+        ?bool                                                  $PrintToAddress = null,
+        ?string                                                $CustomerID = null,
+        ?string                                                $Mode = null,
+        ?string                                                $ImageType = null,
+        ?int                                                   $CostCodeId = null,
+        ?bool                                                  $HideFIM = null,
+        ?string                                                $RateToken = null,
+        ?string                                                $OrderId = null,
+        ?string                                                $memo = null,
+        ?bool                                                  $BypassCleanseAddress = null,
+        ?int                                                   $ImageId = null,
+        ?int                                                   $ImageId2 = null,
+        ?string                                                $Reference1 = null,
+        ?string                                                $Reference2 = null,
+        ?string                                                $Reference3 = null,
+        ?string                                                $Reference4 = null,
+        ?bool                                                  $ReturnIndiciumData = null,
+        ?\Knightar\StampsSoapClient\Type\ExtendedPostageInfoV1 $ExtendedPostageInfo = null,
+        ?bool                                                  $ReturnImageData = null,
+        ?string                                                $ImageDpi = null,
+        ?string                                                $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials           $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

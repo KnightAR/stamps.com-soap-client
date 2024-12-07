@@ -21,14 +21,27 @@ class DeleteCarrier implements RequestInterface
      */
     private string $Carrier;
 
+    const CARRIER_ALL = 'All';
+    const CARRIER_USPS = 'USPS';
+    const CARRIER_FEDEX = 'FedEx';
+    const CARRIER_DHL_EXPRESS = 'DHLExpress';
+    const CARRIER_UPS = 'UPS';
+    const CARRIER_CANADA_POST = 'CanadaPost';
+    const CARRIER_DHL_ECOMMERCE = 'DhlECommerce';
+    const CARRIER_ZORBIT = 'Zorbit';
+
     /**
      * Constructor
      *
+     * @param string $Carrier
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $Carrier)
+    public function __construct(
+        string                                       $Carrier,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

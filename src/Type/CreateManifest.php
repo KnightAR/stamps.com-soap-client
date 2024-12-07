@@ -69,20 +69,33 @@ class CreateManifest implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | string $IntegratorTxID
-     * @param null | \Knightar\StampsSoapClient\Type\ArrayOfGuid $StampsTxIds
-     * @param null | \Knightar\StampsSoapClient\Type\ArrayOfString $TrackingNumbers
-     * @param null | \DateTimeInterface $ShipDate
-     * @param null | string $PrintLayout
      * @param \Knightar\StampsSoapClient\Type\Address $FromAddress
      * @param 'Auto' | 'Png' | 'Gif' | 'Pdf' | 'Epl' | 'Jpg' | 'PrintOncePdf' | 'EncryptedPngUrl' | 'Zpl' | 'AZpl' | 'BZpl' | 'Bmp' | 'BmpMonochrome' | 'PngMonochrome' | 'JpgMonochrome' | 'GifMonochrome' $ImageType
      * @param bool $PrintInstructions
+     * @param null | \DateTimeInterface $ShipDate
+     * @param null | string $PrintLayout
      * @param null | 'ScanForm' | 'GlobalAdvantage' | 'GlobalPost' | 'DriverManifest' | 'All' $ManifestType
      * @param null | int $NumberOfLabels
+     * @param null | \Knightar\StampsSoapClient\Type\ArrayOfGuid $StampsTxIds
+     * @param null | \Knightar\StampsSoapClient\Type\ArrayOfString $TrackingNumbers
+     * @param null | string $IntegratorTxID
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?string $IntegratorTxID, ?\Knightar\StampsSoapClient\Type\ArrayOfGuid $StampsTxIds, ?\Knightar\StampsSoapClient\Type\ArrayOfString $TrackingNumbers, ?\DateTimeInterface $ShipDate, ?string $PrintLayout, \Knightar\StampsSoapClient\Type\Address $FromAddress, string $ImageType, bool $PrintInstructions, ?string $ManifestType, ?int $NumberOfLabels)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\Address        $FromAddress,
+        string                                         $ImageType,
+        bool                                           $PrintInstructions,
+        ?\DateTimeInterface                            $ShipDate = null,
+        ?string                                        $PrintLayout = null,
+        ?string                                        $ManifestType = null,
+        ?int                                           $NumberOfLabels = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfGuid   $StampsTxIds = null,
+        ?\Knightar\StampsSoapClient\Type\ArrayOfString $TrackingNumbers = null,
+        ?string                                        $IntegratorTxID = null,
+        ?string                                        $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials   $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
@@ -97,6 +110,30 @@ class CreateManifest implements RequestInterface
         $this->ManifestType = $ManifestType;
         $this->NumberOfLabels = $NumberOfLabels;
     }
+
+// Declare constants for string types
+    const IMAGE_TYPE_AUTO = 'Auto';
+    const IMAGE_TYPE_PNG = 'Png';
+    const IMAGE_TYPE_GIF = 'Gif';
+    const IMAGE_TYPE_PDF = 'Pdf';
+    const IMAGE_TYPE_EPL = 'Epl';
+    const IMAGE_TYPE_JPG = 'Jpg';
+    const IMAGE_TYPE_PRINT_ONCE_PDF = 'PrintOncePdf';
+    const IMAGE_TYPE_ENCRYPTED_PNG_URL = 'EncryptedPngUrl';
+    const IMAGE_TYPE_ZPL = 'Zpl';
+    const IMAGE_TYPE_AZPL = 'AZpl';
+    const IMAGE_TYPE_BZPL = 'BZpl';
+    const IMAGE_TYPE_BMP = 'Bmp';
+    const IMAGE_TYPE_BMP_MONOCHROME = 'BmpMonochrome';
+    const IMAGE_TYPE_PNG_MONOCHROME = 'PngMonochrome';
+    const IMAGE_TYPE_JPG_MONOCHROME = 'JpgMonochrome';
+    const IMAGE_TYPE_GIF_MONOCHROME = 'GifMonochrome';
+
+    const MANIFEST_TYPE_SCAN_FORM = 'ScanForm';
+    const MANIFEST_TYPE_GLOBAL_ADVANTAGE = 'GlobalAdvantage';
+    const MANIFEST_TYPE_GLOBAL_POST = 'GlobalPost';
+    const MANIFEST_TYPE_DRIVER_MANIFEST = 'DriverManifest';
+    const MANIFEST_TYPE_ALL = 'All';
 
     /**
      * @return null | string

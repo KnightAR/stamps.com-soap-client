@@ -34,20 +34,35 @@ class CheckCarrierPickupAvailability implements RequestInterface
     /**
      * Constructor
      *
+     * @param \Knightar\StampsSoapClient\Type\CarrierPickupAddress $Address
+     * @param null | \DateTimeInterface $Date
+     * @param null | 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | \DateTimeInterface $Date
-     * @param \Knightar\StampsSoapClient\Type\CarrierPickupAddress $Address
-     * @param null | 'All' | 'USPS' | 'FedEx' | 'DHLExpress' | 'UPS' | 'CanadaPost' | 'DhlECommerce' | 'Zorbit' $Carrier
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?\DateTimeInterface $Date, \Knightar\StampsSoapClient\Type\CarrierPickupAddress $Address, ?string $Carrier)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\CarrierPickupAddress $Address,
+        ?\DateTimeInterface                                  $Date = null,
+        ?string                                              $Carrier = null,
+        ?string                                              $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials         $Credentials = null
+    )
     {
+        $this->Address = $Address;
+        $this->Date = $Date;
+        $this->Carrier = $Carrier;
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
-        $this->Date = $Date;
-        $this->Address = $Address;
-        $this->Carrier = $Carrier;
     }
+
+    public const CARRIER_ALL = 'All';
+    public const CARRIER_USPS = 'USPS';
+    public const CARRIER_FEDEX = 'FedEx';
+    public const CARRIER_DHL_EXPRESS = 'DHLExpress';
+    public const CARRIER_UPS = 'UPS';
+    public const CARRIER_CANADA_POST = 'CanadaPost';
+    public const CARRIER_DHL_ECOMMERCE = 'DhlECommerce';
+    public const CARRIER_ZORBIT = 'Zorbit';
 
     /**
      * @return null | string

@@ -39,14 +39,21 @@ class ChangeDefaultPaymentMethod implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param \Knightar\StampsSoapClient\Type\MachineInfo $MachineInfo
-     * @param null | 'AllDefaultPaymentMethods' | 'DefaultServiceFeePaymentMethod' | 'DefaultPostalPurchasePaymentMethod' | 'DefaultStorePaymentMethod' $PaymentType
+     * @param null | string $PaymentType
      * @param null | string $PaymentMethodID
      * @param null | bool $SendEmail
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\MachineInfo $MachineInfo, ?string $PaymentType, ?string $PaymentMethodID, ?bool $SendEmail)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\MachineInfo  $MachineInfo,
+        ?string                                      $PaymentType = null,
+        ?string                                      $PaymentMethodID = null,
+        ?bool                                        $SendEmail = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
@@ -55,6 +62,11 @@ class ChangeDefaultPaymentMethod implements RequestInterface
         $this->PaymentMethodID = $PaymentMethodID;
         $this->SendEmail = $SendEmail;
     }
+
+    const PAYMENT_TYPE_ALL_DEFAULT = 'AllDefaultPaymentMethods';
+    const PAYMENT_TYPE_DEFAULT_SERVICE_FEE = 'DefaultServiceFeePaymentMethod';
+    const PAYMENT_TYPE_DEFAULT_POSTAL_PURCHASE = 'DefaultPostalPurchasePaymentMethod';
+    const PAYMENT_TYPE_DEFAULT_STORE = 'DefaultStorePaymentMethod';
 
     /**
      * @return null | string

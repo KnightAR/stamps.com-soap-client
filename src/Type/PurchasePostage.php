@@ -44,15 +44,23 @@ class PurchasePostage implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param float $PurchaseAmount
      * @param float $ControlTotal
      * @param null | \Knightar\StampsSoapClient\Type\MachineInfo $MI
      * @param null | string $IntegratorTxID
      * @param null | bool $SendEmail
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, float $PurchaseAmount, float $ControlTotal, ?\Knightar\StampsSoapClient\Type\MachineInfo $MI, ?string $IntegratorTxID, ?bool $SendEmail)
+    public function __construct(
+        float                                        $PurchaseAmount,
+        float                                        $ControlTotal,
+        ?\Knightar\StampsSoapClient\Type\MachineInfo $MI = null,
+        ?string                                      $IntegratorTxID = null,
+        ?bool                                        $SendEmail = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

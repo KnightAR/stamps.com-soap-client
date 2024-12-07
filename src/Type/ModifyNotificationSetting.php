@@ -29,12 +29,17 @@ class ModifyNotificationSetting implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | \Knightar\StampsSoapClient\Type\NotificationSetting $NotificationSetting
-     * @param null | bool $SetAsDefault
+     * @param \Knightar\StampsSoapClient\Type\NotificationSetting|null $NotificationSetting
+     * @param bool|null $SetAsDefault
+     * @param string|null $Authenticator
+     * @param \Knightar\StampsSoapClient\Type\Credentials|null $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?\Knightar\StampsSoapClient\Type\NotificationSetting $NotificationSetting, ?bool $SetAsDefault)
+    public function __construct(
+        ?\Knightar\StampsSoapClient\Type\NotificationSetting $NotificationSetting = null,
+        ?bool                                                $SetAsDefault = null,
+        ?string                                              $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials         $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

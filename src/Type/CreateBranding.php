@@ -34,13 +34,19 @@ class CreateBranding implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | \Knightar\StampsSoapClient\Type\BrandingProperties $BrandingProperties
-     * @param null | string $Reference
-     * @param null | bool $SetAsDefault
+     * @param null|\Knightar\StampsSoapClient\Type\BrandingProperties $BrandingProperties
+     * @param null|string $Reference
+     * @param null|bool $SetAsDefault
+     * @param null|string $Authenticator
+     * @param null|\Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?\Knightar\StampsSoapClient\Type\BrandingProperties $BrandingProperties, ?string $Reference, ?bool $SetAsDefault)
+    public function __construct(
+        ?\Knightar\StampsSoapClient\Type\BrandingProperties $BrandingProperties = null,
+        ?string                                             $Reference = null,
+        ?bool                                               $SetAsDefault = null,
+        ?string                                             $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials        $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

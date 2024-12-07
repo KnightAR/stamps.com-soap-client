@@ -32,9 +32,14 @@ class FinishPasswordReset implements RequestInterface
      * @param string $Username
      * @param string $TempPassword
      * @param string $NewPassword
-     * @param null | string $IntegrationId
+     * @param null|string $IntegrationId
      */
-    public function __construct(string $Username, string $TempPassword, string $NewPassword, ?string $IntegrationId)
+    public function __construct(
+        string  $Username,
+        string  $TempPassword,
+        string  $NewPassword,
+        ?string $IntegrationId = null
+    )
     {
         $this->Username = $Username;
         $this->TempPassword = $TempPassword;

@@ -29,12 +29,17 @@ class ChangePassword implements RequestInterface
     /**
      * Constructor
      *
+     * @param string $NewPassword
+     * @param null | string $OldPassword
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param null | string $OldPassword
-     * @param string $NewPassword
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, ?string $OldPassword, string $NewPassword)
+    public function __construct(
+        string                                       $NewPassword,
+        ?string                                      $OldPassword = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

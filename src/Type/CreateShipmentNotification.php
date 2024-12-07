@@ -84,23 +84,39 @@ class CreateShipmentNotification implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param string $TrackingNumber
+     * @param string $EmailSenderName
+     * @param \Knightar\StampsSoapClient\Type\Address $From
+     * @param \DateTimeInterface $ShipDate
+     * @param null | \Knightar\StampsSoapClient\Type\Address $To
+     * @param null | \Knightar\StampsSoapClient\Type\OrderDetails $OrderDetails
      * @param null | string $Carrier
      * @param null | float $WeightLb
      * @param null | float $WeightOz
      * @param null | string $TrackingType
      * @param null | string $BrandingId
      * @param null | string $NotificationSettingId
-     * @param string $EmailSenderName
-     * @param \Knightar\StampsSoapClient\Type\Address $From
-     * @param null | \Knightar\StampsSoapClient\Type\Address $To
-     * @param null | \Knightar\StampsSoapClient\Type\OrderDetails $OrderDetails
-     * @param \DateTimeInterface $ShipDate
      * @param null | bool $SendEmail
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $TrackingNumber, ?string $Carrier, ?float $WeightLb, ?float $WeightOz, ?string $TrackingType, ?string $BrandingId, ?string $NotificationSettingId, string $EmailSenderName, \Knightar\StampsSoapClient\Type\Address $From, ?\Knightar\StampsSoapClient\Type\Address $To, ?\Knightar\StampsSoapClient\Type\OrderDetails $OrderDetails, \DateTimeInterface $ShipDate, ?bool $SendEmail)
+    public function __construct(
+        string                                        $TrackingNumber,
+        string                                        $EmailSenderName,
+        \Knightar\StampsSoapClient\Type\Address       $From,
+        \DateTimeInterface                            $ShipDate,
+        ?\Knightar\StampsSoapClient\Type\Address      $To = null,
+        ?\Knightar\StampsSoapClient\Type\OrderDetails $OrderDetails = null,
+        ?string                                       $Carrier = null,
+        ?float                                        $WeightLb = null,
+        ?float                                        $WeightOz = null,
+        ?string                                       $TrackingType = null,
+        ?string                                       $BrandingId = null,
+        ?string                                       $NotificationSettingId = null,
+        ?bool                                         $SendEmail = null,
+        ?string                                       $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials  $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

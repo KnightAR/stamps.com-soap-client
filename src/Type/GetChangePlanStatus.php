@@ -24,11 +24,15 @@ class GetChangePlanStatus implements RequestInterface
     /**
      * Constructor
      *
+     * @param int $TransactionID
      * @param null | string $Authenticator
      * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
-     * @param int $TransactionID
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, int $TransactionID)
+    public function __construct(
+        int                                          $TransactionID,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

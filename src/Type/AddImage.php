@@ -31,6 +31,9 @@ class AddImage implements RequestInterface
      */
     private ?string $ImageCategory = null;
 
+    public const IMAGE_CATEGORY_LABEL_LOGO = 'LabelLogo';
+    public const IMAGE_CATEGORY_BRANDED_TRACKING = 'BrandedTracking';
+
     /**
      * Constructor
      *
@@ -40,7 +43,13 @@ class AddImage implements RequestInterface
      * @param string $ImageData
      * @param null | 'LabelLogo' | 'BrandedTracking' $ImageCategory
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, string $ImageName, string $ImageData, ?string $ImageCategory)
+    public function __construct(
+        string                                       $ImageName,
+        string                                       $ImageData,
+        ?string                                      $ImageCategory = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;

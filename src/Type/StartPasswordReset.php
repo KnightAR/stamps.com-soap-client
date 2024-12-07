@@ -32,9 +32,14 @@ class StartPasswordReset implements RequestInterface
      * @param string $Username
      * @param string $Codeword1
      * @param string $Codeword2
-     * @param null | string $IntegrationId
+     * @param null|string $IntegrationId
      */
-    public function __construct(string $Username, string $Codeword1, string $Codeword2, ?string $IntegrationId)
+    public function __construct(
+        string  $Username,
+        string  $Codeword1,
+        string  $Codeword2,
+        ?string $IntegrationId = null
+    )
     {
         $this->Username = $Username;
         $this->Codeword1 = $Codeword1;

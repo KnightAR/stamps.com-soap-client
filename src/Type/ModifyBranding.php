@@ -29,19 +29,23 @@ class ModifyBranding implements RequestInterface
     /**
      * Constructor
      *
-     * @param null | string $Authenticator
-     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      * @param \Knightar\StampsSoapClient\Type\Branding $Branding
      * @param null | bool $SetAsDefault
+     * @param null | string $Authenticator
+     * @param null | \Knightar\StampsSoapClient\Type\Credentials $Credentials
      */
-    public function __construct(?string $Authenticator = null, ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null, \Knightar\StampsSoapClient\Type\Branding $Branding, ?bool $SetAsDefault)
+    public function __construct(
+        \Knightar\StampsSoapClient\Type\Branding     $Branding,
+        ?bool                                        $SetAsDefault = null,
+        ?string                                      $Authenticator = null,
+        ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null
+    )
     {
         $this->Authenticator = $Authenticator;
         $this->Credentials = $Credentials;
         $this->Branding = $Branding;
         $this->SetAsDefault = $SetAsDefault;
     }
-
     /**
      * @return null | string
      */
