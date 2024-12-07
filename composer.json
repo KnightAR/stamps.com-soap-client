@@ -1,0 +1,22 @@
+{
+    "name": "knightar/stamps.com-soap-client",
+    "description": "A Soap Client library for Stamps.com",
+    "keywords": [
+        "soap", "stamps.com", "api", "client"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Knightar\\StampsSoapClient\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "require": {
+        "symfony/http-client": "^7.2",
+        "nyholm/psr7": "^1.8",
+        "phpro/soap-client": "^3.4"
+    }
+}
