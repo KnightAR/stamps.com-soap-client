@@ -17,9 +17,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class AuthenticationSubscriber implements EventSubscriberInterface
 {
-    public ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null;
-    public string $wsdl;
-    public Psr16Cache $cache;
+    private ?\Knightar\StampsSoapClient\Type\Credentials $Credentials = null;
+    private string $wsdl;
+    private Psr16Cache $cache;
 
     public function __construct(
         string $wsdl,

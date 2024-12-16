@@ -21,6 +21,8 @@
         "nyholm/psr7": "^1.8",
         "phpro/soap-client": "^3.4",
         "symfony/cache": "^7.2",
-        "psr/simple-cache": "^3.0"
+        "psr/simple-cache": "^3.0",
+        "symfony/http-kernel": "^7.2",
+        "symfony/mime": "^7.2"
     }
 }

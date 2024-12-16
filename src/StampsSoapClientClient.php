@@ -7,6 +7,10 @@ use Knightar\StampsSoapClient\Type;
 use Phpro\SoapClient\Type\ResultInterface;
 use Phpro\SoapClient\Exception\SoapException;
 use Phpro\SoapClient\Type\RequestInterface;
+use Symfony\Component\Cache\Adapter\AdapterInterface;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Psr16Cache;
+use Symfony\Component\VarDumper\Caster\ReflectionCaster;
 
 class StampsSoapClientClient
 {
@@ -15,9 +19,12 @@ class StampsSoapClientClient
      */
     private $caller;
 
-    public function __construct(\Phpro\SoapClient\Caller\Caller $caller)
+    private null|Psr16Cache|AdapterInterface $cache;
+
+    public function __construct(\Phpro\SoapClient\Caller\Caller $caller, null|Psr16Cache|AdapterInterface $cache)
     {
         $this->caller = $caller;
+        $this->cache = $cache instanceof Psr16Cache ? $cache : new Psr16Cache($cache ?? new ArrayAdapter());
     }
 
     /**
@@ -357,6 +364,49 @@ class StampsSoapClientClient
         \Psl\Type\instance_of(\Knightar\StampsSoapClient\Type\CleanseAddressResponse::class)->assert($response);
         \Psl\Type\instance_of(\Phpro\SoapClient\Type\ResultInterface::class)->assert($response);
 
+        return $response;
+    }
+
+    /**
+     * Cleanse an address. (Cached)
+     *
+     * @param RequestInterface & Type\CleanseAddress $parameters
+     * @return ResultInterface || Type\CleanseAddressResponse
+     * @throws SoapException
+     */
+    public function cleanseAddressCached(\Knightar\StampsSoapClient\Type\CleanseAddress $parameters, $ttl = 60 * 60 * 24 * 7) : \Knightar\StampsSoapClient\Type\CleanseAddressResponse
+    {
+        /**
+         * @param string|null $CleanseHash
+         * @param string|null $OverrideHash
+         */
+        $address = clone $parameters->getAddress();
+        $parameters = new Type\CleanseAddress(
+            Address: $address->withCleanseHash(null)->withOverrideHash(null),
+            FromZIPCode: $parameters->getFromZIPCode()
+        );
+        $hash = sha1(serialize($parameters));
+        if ($this->cache->has($hash)) {
+            return $this->cache->get($hash);
+        }
+
+        $response = ($this->caller)('CleanseAddress', $parameters);
+
+        \Psl\Type\instance_of(\Knightar\StampsSoapClient\Type\CleanseAddressResponse::class)->assert($response);
+        \Psl\Type\instance_of(\Phpro\SoapClient\Type\ResultInterface::class)->assert($response);
+
+        $cachedResponse = new Type\CachedCleanseAddressResponse();
+        $reflection = new \ReflectionClass($response);
+        foreach($reflection->getProperties() as $property) {
+            $key = $property->getName();
+            $value = $property->getValue($response);
+            $method = 'with' . ucfirst($key);
+            if (method_exists($response, $method)) {
+                $cachedResponse = $cachedResponse->{$method}($value);
+            }
+        }
+
+        $this->cache->set($hash, $cachedResponse, time() + $ttl); //Cache for 7 days by default
         return $response;
     }
 
