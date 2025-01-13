@@ -41,8 +41,16 @@ class AuthenticationSubscriber implements EventSubscriberInterface
         $request = $event->getRequest();
         if ($event->getMethod() !== 'AuthenticateUser' && method_exists($request, 'withAuthenticator')) {
             if ($this->cache->has('authenticator') && $this->cache->get('authenticator')) {
-                $event->registerRequest($request->withAuthenticator($this->cache->get('authenticator'))->withCredentials(null));
-            } elseif (method_exists($request, 'getCredentials') && ($request->getCredentials() ?? $this->Credentials)) {
+                $authenticator = $this->cache->get('authenticator');
+                parse_str($authenticator, $auth);
+                if (($auth['exp'] ?? 60 * 60 * 24) - 3600 < time()) {
+                    $this->cache->delete('authenticator');
+                } else {
+                    $event->registerRequest($request->withAuthenticator($this->cache->get('authenticator'))->withCredentials(null));
+                    return;
+                }
+            }
+            if (method_exists($request, 'getCredentials') && ($request->getCredentials() ?? $this->Credentials)) {
                 $authenticator = $this->getAuthenticator($request);
                 parse_str($authenticator, $auth);
                 if (!$this->cache->set('authenticator', $authenticator, ($auth['exp'] ?? 60 * 60 * 24) - 3600)) {
