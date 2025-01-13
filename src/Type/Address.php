@@ -2,7 +2,9 @@
 
 namespace Knightar\StampsSoapClient\Type;
 
-class Address
+use ReturnTypeWillChange;
+
+class Address implements \JsonSerializable
 {
     /**
      * Address constructor.
@@ -93,6 +95,21 @@ class Address
         $this->OverrideHash = $OverrideHash;
         $this->EmailAddress = $EmailAddress;
         $this->FullAddress = $FullAddress;
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize() : mixed {
+        $reflect = new \ReflectionClass($this);
+        $vars = $reflect->getProperties(\ReflectionProperty::IS_PRIVATE);
+
+        $out = [];
+        foreach ($vars as $privateVar) {
+            $var = $privateVar->getName();
+            $out[$var] = $this->$var;
+        }
+        return $out;
     }
 
     /**
